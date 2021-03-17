@@ -1,0 +1,123 @@
+{
+    "login": {
+        "header": "A community-powered database of available vehicles",
+        "createNewAccount": "Create new account",
+        "registerFormHeader": "Create Your account",
+        "tou": "Accept terms of use",
+        "submit": "Confirm"
+    },
+
+    "common": {
+        "username": "username",
+        "password": "password",
+        "login": "log in",
+        "logout": "log out",
+        "loading": "loading",
+        "search": "Search",
+        "email": "email",
+        "confirmPass": "Confirm Password"
+    },
+
+    "dashboardFilters": {
+        "make": "Make",
+        "fuel": "Fuel Type",
+        "body": "Body Type"
+    },
+
+    "carsGrid": {
+        "sortFilter": "Sort by",
+        "hitsCount": "Results",
+        "filtersToggle": "Show filters"
+    },
+
+    "carCard": {
+        "mileage": "Mileage",
+        "price": "Price",
+        "open": "Edit"
+    },
+
+    "pagination": {
+        "previous": "Previous",
+        "next": "Next"
+    },
+
+    "navOptions": {
+        "addVehicle": "Add vehicle",
+        "myVehicles": "My vehicles"
+    },
+
+    "formErrors": {
+        "emptyField": "This field is required",
+        "paswMismatch": "Passwords must match",
+        "invalidURL": "Please enter a valid URL",
+        "invalidEmail": "Please provide a valid email",
+        "termsOfUse": "Accepting terms of use is required"
+    },
+
+    "commonErrors": {
+        "userExists": "User with that username already exists",
+        "emailExists": "User with that email already exists",
+        "invalidLogin": "Username or password incorrect",
+        "invalidVehicleForm": "Please correct fields marked in red"
+    },
+
+    "commonConfirmations": {
+        "userRegistered": "Welcome,",
+        "userLogged": "Welcome back,",
+        "vehicleAdded": "Added new vehicle",
+        "vehicleEdited": "Vehicle edited"
+    },
+
+    "vehicleForm": {
+        "header": "Add Vehicle",
+        "editHeader": "Fahrzeugdaten bearbeiten",
+        "basicInfoHeader": "Basic info",
+        "make": "Make",
+        "model": "Model",
+        "variant": "Variant",
+        "manufactured": "Date of manufacture",
+        "mileage": "Mileage",
+        "extraInfoSubheader": "Other info",
+        "bodyType": "Body type",
+        "fuelType": "Fuel type",
+        "img": "Image URL",
+        "description": "Description",
+        "price": "Price",
+        "backLink": "Return",
+        "submit": "Add",
+        "edit": "Edit"  
+    },
+
+    "vehicleFormPlaceholders": {
+        "model": "Astra h",
+        "variant": "GTI, GTC...",
+        "mileage": "80000"
+    },
+
+    "vehicleParams":{
+        "other": "Other",
+        "compact": "Compact",
+        "convertible": "Convertible",
+        "coupe": "Coupe",
+        "sedan": "Sedan",
+        "stationWagon": "Station Wagon",
+        "pickup": "Pickup",
+        "suv": "SUV",
+        "petrol": "Petrol",
+        "diesel": "Diesel",
+        "CNG": "CNG",
+        "LPG": "LPG",
+        "BEV": "Battery Electric",
+        "HEV": "Hydrogen Electric",
+        "hybrid": "Hybrid"
+    },
+
+    "sortParams": {
+        "manufDateAsc": "Date of manufacture - ascending",
+        "manufDateDesc": "Date of manufacture - descending",
+        "modelNameAsc": "Make name - ascending",
+        "modelNameDesc": "Make name - descending",
+        "priceAsc": "Price - ascending",
+        "priceDesc": "Price - descending"
+    }
+}

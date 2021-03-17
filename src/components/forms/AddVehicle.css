@@ -1,0 +1,234 @@
+.f-addVehicle-top-container {
+  padding-top: 100px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 100px;
+
+  margin: auto;
+
+  min-height: 100vh;
+  max-width: 1500px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.f-addVehicle-inner-container {
+  max-width: 1000px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.f-addVehicle-inner-container > header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 60px;
+
+  border: solid 1px #82a5b5;
+  border-radius: 5px;
+
+  background-color: #c2cad0;
+
+  margin-bottom: 20px;
+}
+
+.f-addVehicle-form-container {
+  border: solid 1px grey;
+}
+
+.f-addVehicle-form > section {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.f-addVehicle-form > section > div {
+  margin-left: 15px;
+  margin-right: 15px;
+
+  width: 100%;
+}
+
+.f-addVehicle-form > section:not(:first-child) {
+  margin-top: 25px;
+}
+
+.f-addVehicle-form > section:last-child {
+  padding-bottom: 30px;
+}
+
+.f-addVehicle-form > section > header {
+  width: 100%;
+  height: 35px;
+
+  background-color: #e8e8e8;
+  border: solid 1px lightgrey;
+
+  margin-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+}
+
+.f-addVehicle-form-input-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+
+  grid-row-gap: 25px;
+  grid-column-gap: 20px;
+
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.f-addVehicle-form-input-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 250px;
+  width: 100%;
+
+  text-align: left;
+}
+
+.f-addVehicle-form-input-unit select,
+.f-addVehicle-form-input-unit input,
+.f-addVehicle-form-longInput-unit input {
+  width: 100%;
+  height: 30px;
+
+  padding-right: 10px;
+  padding-left: 10px;
+
+  border-radius: 3px;
+  border: solid 1px black;
+
+  font-weight: bold;
+}
+
+.f-addVehicle-form-input-unit label {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.f-addVehicle-form-longInput-container {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 20px;
+
+  width: 92% !important;
+}
+
+.f-addVehicle-form-longInput-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  max-width: 450px;
+}
+
+.f-addVehicle-form-longInput-textarea-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  max-width: 100%;
+}
+
+.f-addVehicle-form-longInput-textarea-unit textarea {
+  background-color: ghostwhite;
+  resize: none;
+
+  padding: 15px;
+
+  max-height: 180px;
+}
+
+.f-addVehicle-form-actions-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.f-addVehicle-form-actions-container button {
+  height: 30px;
+  width: 140px;
+
+  border-radius: 10px;
+  border: none;
+
+  background-color: #1773ea;
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.f-addVehicle-form-actions-container button:hover {
+  cursor: pointer;
+
+  transform: translate(0, -1px);
+}
+
+.f-addVehicle-form-actions-container button:focus {
+  outline: none;
+}
+
+.input-error::after{
+  position: absolute;
+
+  top: 60px;
+  left: 0px;
+
+  content: attr(data-tooltip);
+
+  font-size: 14px;
+  font-weight: bold;
+
+  margin-left: 12px;
+
+  color: red;
+}
+
+.f-addVehicle-form-input-unit.input-error > input, 
+.f-addVehicle-form-input-unit.input-error > select,
+.f-addVehicle-form-longInput-unit.input-error > input,
+.f-addVehicle-form-longInput-unit.input-error > select,
+.f-addVehicle-form-longInput-textarea-unit.input-error > textarea{
+  border-color: red;
+}
+
+@media (max-width: 860px) and (min-width: 500px) {
+  .f-addVehicle-form-input-grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .f-addVehicle-spacer {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .f-addVehicle-form-input-grid-container {
+    grid-template-columns: 1fr;
+  }
+}

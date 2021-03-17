@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Poppins, sans-serif;
+}
+
+input,
+select,
+option {
+  background-color: ghostwhite;
+}
+
+body {
+  background-color: ghostwhite;
+}
+
+#app-root {
+  position: relative;
+}

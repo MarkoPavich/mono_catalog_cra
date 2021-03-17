@@ -1,0 +1,123 @@
+{
+    "login": {
+        "header": "Katalog dostupnih vozila na bazi zajednice",
+        "createNewAccount": "Izradi novi račun",
+        "registerFormHeader": "Izradi svoj račun",
+        "tou": "Prihvati opće uvjete",
+        "submit": "Potvrdi"
+    },
+
+    "common": {
+        "username": "korisničko ime",
+        "password": "lozinka",
+        "login": "prijavi se",
+        "logout": "odjava",
+        "loading": "učitavanje",
+        "search": "Pretraga",
+        "email": "email",
+        "confirmPass": "Potvrdi lozinku"
+    },
+
+    "dashboardFilters": {
+        "make": "Marka",
+        "fuel": "Vrsta Goriva",
+        "body": "Oblik Šasije"
+    },
+
+    "carsGrid": {
+        "sortFilter": "Sortiraj po",
+        "hitsCount": "Broj rezultata",
+        "filtersToggle": "Prikaz filtera"
+    },
+
+    "carCard": {
+        "mileage": "Stanje",
+        "price": "Cijena",
+        "open": "Izmijeni"
+    },
+
+    "pagination": {
+        "previous": "Prethodna",
+        "next": "Iduća"
+    },
+
+    "navOptions": {
+        "addVehicle": "Dodaj vozilo",
+        "myVehicles": "Moja vozila"
+    },
+
+    "formErrors": {
+        "emptyField": "Ovo polje je obavezno",
+        "paswMismatch": "Lozinke se moraju poklapati",
+        "invalidURL": "Molimo unesite ispravnu poveznicu",
+        "invalidEmail": "Molimo unesite ispravan email",
+        "termsOfUse": "Molimo prihvatiti uvjete korištenja"
+    },
+
+    "commonErrors": {
+        "userExists": "Korisničko ime već postoji",
+        "emailExists": "Email već postoji",
+        "invalidLogin": "Neipsravno korisničko ime ili lozinka",
+        "invalidVehicleForm": "Molimo ispraviti polja označena crveno"
+    },
+
+    "commonConfirmations": {
+        "userRegistered": "Dobrodošli,",
+        "userLogged": "Dobrodošli natrag,",
+        "vehicleAdded": "Vozilo je dodano",
+        "vehicleEdited": "Podatci su izmijenjeni"
+    },
+
+    "vehicleForm": {
+        "header": "Dodajte vozilo",
+        "editHeader": "Izmjena podataka",
+        "basicInfoHeader": "Osnovni podatci",
+        "make": "Marka",
+        "model": "Model",
+        "variant": "Varijanta",
+        "manufactured": "Proizvodnja",
+        "mileage": "Prijeđeno kilometara",
+        "extraInfoSubheader": "Dodatni podatci",
+        "bodyType": "Oblik šasije",
+        "fuelType": "Vrsta pogona",
+        "img": "Link na sliku",
+        "description": "Opis",
+        "price": "Cijena",
+        "backLink": "Povratak",
+        "submit": "Dodaj",
+        "edit": "Izmijeni" 
+    },
+
+    "vehicleFormPlaceholders": {
+        "model": "Astra h",
+        "variant": "GTI, GTC...",
+        "mileage": "80000"
+    },
+
+    "vehicleParams":{
+        "other": "ostalo",
+        "compact": "Kompakt",
+        "convertible": "Kabrio",
+        "coupe": "Kupe",
+        "sedan": "Sedan",
+        "stationWagon": "Karavan",
+        "pickup": "Kamionet",
+        "suv": "SUV",
+        "petrol": "Benzin",
+        "diesel": "Dizel",
+        "CNG": "CNG",
+        "LPG": "LPG",
+        "BEV": "Elektro",
+        "HEV": "Vodik-Elektro",
+        "hybrid": "Hibrid"
+    },
+
+    "sortParams": {
+        "manufDateAsc": "Godištu - starije prema mlađe",
+        "manufDateDesc": "Godištu - mlađe prema starije",
+        "modelNameAsc": "Marci - od A do Z",
+        "modelNameDesc": "Marci - od Z do A",
+        "priceAsc": "Cijeni - jeftinije prema skuplje",
+        "priceDesc": "Cijeni - skuplje prema jeftinije"
+    }
+}

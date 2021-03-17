@@ -1,0 +1,50 @@
+.c-busy-spinner {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 80px;
+  height: 80px;
+
+  margin: auto;
+}
+
+.c-busy-spinner div {
+  display: block;
+  position: absolute;
+
+  width: 64px;
+  height: 64px;
+
+  margin: 8px;
+
+  border: 8px solid #82a5b5;
+  border-radius: 50%;
+  border-color: #82a5b5 transparent transparent transparent;
+
+  animation: c-busy-spinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.c-busy-spinner div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.c-busy-spinner div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.c-busy-spinner div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes c-busy-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

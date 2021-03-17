@@ -1,0 +1,36 @@
+.l-footer {
+  min-height: 60px;
+  width: 100%;
+
+  background-color: black;
+
+  margin-top: -60px;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding: 15px;
+
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.l-footer a,
+.l-footer span {
+  color: white;
+  font-size: 14px;
+
+  text-decoration: none;
+}
+
+.l-footer-txt-box {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
+}
+
+@media (max-width: 500px) {
+  .l-footer {
+    flex-direction: column;
+  }
+}

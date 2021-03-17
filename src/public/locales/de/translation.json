@@ -1,0 +1,122 @@
+{
+    "login": {
+        "header": "Eine Community-basierte Datenbank verfügbarer Fahrzeuge",
+        "createNewAccount": "Ein neues Konto erstellen",
+        "registerFormHeader": "Erstelle deinen Account",
+        "tou": "Nutzungsbedingungen akzeptieren",
+        "submit": "Bestätigen"
+    },
+
+    "common": {
+        "username": "nutzername",
+        "password": "passwort",
+        "login": "einloggen",
+        "logout": "ausloggen",
+        "loading": "Wird geladen",
+        "search": "Suche",
+        "email": "email",
+        "confirmPass": "Kennwort Bestätigen"
+    },
+
+    "dashboardFilters": {
+        "make": "Marke",
+        "fuel": "Kraftstoff",
+        "body": "Karosserieform"
+    },
+
+    "carsGrid": {
+        "sortFilter": "Sortieren",
+        "hitsCount": "Gesamtergebnisse",
+        "filtersToggle": "Filter anzeigen"
+    },
+
+    "carCard": {
+        "mileage": "Kilometerstand",
+        "price": "Preis",
+        "open": "bearbeiten"
+    },
+
+    "pagination": {
+        "previous": "vorher",
+        "next": "Nächster"
+    },
+
+    "navOptions": {
+        "addVehicle": "Fahrzeug hinzufügen",
+        "myVehicles": "Meine Fahrzeuge"
+    },
+
+    "formErrors": {
+        "emptyField": "Dieses Feld ist erforderlich",
+        "paswMismatch": "Passwörter müssen übereinstimmen",
+        "invalidURL": "Bitte geben Sie eine gültige URL ein",
+        "invalidEmail": "Bitte geben Sie eine gültige Email-Adresse ein",
+        "termsOfUse": "Das Akzeptieren von Nutzungsbedingungen ist erforderlich"
+    },
+
+    "commonErrors": {
+        "userExists": "Benutzername existiert bereits",
+        "emailExists": "Benutzer mit dieser E-Mail existiert bereits",
+        "invalidLogin": "Benutzername oder Passwort falsch",
+        "invalidVehicleForm": "Bitte korrigieren Sie rot markierte Felder"
+    },
+
+    "commonConfirmations": {
+        "userRegistered": "Herzlich willkommen,",
+        "userLogged": "Willkommen zurück,",
+        "vehicleAdded": "Neues Fahrzeug hinzugefügt",
+        "vehicleEdited": "Fahrzeug bearbeitet"
+    },
+
+    "vehicleForm": {
+        "header": "Fahrzeug hinzufügen",
+        "basicInfoHeader": "Basisinformation",
+        "make": "Automarke",
+        "model": "Model",
+        "variant": "Variante",
+        "manufactured": "Herstellungsdatum",
+        "mileage": "Kilometerstand zurückgelegt",
+        "extraInfoSubheader": "andere Information",
+        "bodyType": "Körper",
+        "fuelType": "Treibstoffart",
+        "img": "Bildlink",
+        "description": "Beschreibung",
+        "price": "Preis",
+        "backLink": "Rückkehr",
+        "submit": "Hinzufügen",
+        "edit": "Veränderung" 
+    },
+
+    "vehicleFormPlaceholders": {
+        "model": "Astra h",
+        "variant": "GTI, GTC...",
+        "mileage": "80000"
+    },
+
+    "vehicleParams":{
+        "other": "Anderer ",
+        "compact": "Kompaktwagen",
+        "convertible": "Cabrio",
+        "coupe": "Coup",
+        "sedan": "Limousine",
+        "stationWagon": "Kombi",
+        "pickup": "Pick-up",
+        "suv": "SUV",
+        "petrol": "Benzin",
+        "diesel": "Diesel",
+        "CNG": "CNG",
+        "LPG": "LPG",
+        "BEV": "Batterie elektrisch",
+        "HEV": "Wasserstoff elektrisch",
+        "hybrid": "Hybrid"
+    },
+
+    "sortParams": {
+        "manufDateAsc": "Herstellungsdatum - aufsteigend",
+        "manufDateDesc": "Herstellungsdatum - absteigend",
+        "modelNameAsc": "Machen - aufsteigend",
+        "modelNameDesc": "Machen - absteigend",
+        "priceAsc": "Preis - aufsteigend",
+        "priceDesc": "Preis - absteigend"
+    }
+}
