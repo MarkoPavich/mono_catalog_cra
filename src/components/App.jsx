@@ -6,13 +6,14 @@ import AlertTemplate from 'react-alert-template-basic';
 import WindowResizeMonitor from './common/WindowResizeMonitor';
 import Navbar from './layout/navbar/Navbar';
 import Footer from './layout/footer/Footer';
-import Login from './account/Login';
-import Dashboard from './dashboard/Dashboard';
+import Login from '../pages/Login';
+import Dashboard from '../pages/Dashboard';
+import MyVehicles from '../pages/MyVehicles';
 import StoreProvider from '../StoreProvider';
 import PrivateRoute from './common/PrivateRoute';
 
 import Alert from './common/Alert';
-import AddVehicle from './forms/AddVehicle';
+import AddVehicle from '../pages/AddVehicle';
 
 const alertOptions = {
   timeout: 5000,
@@ -36,12 +37,8 @@ function App() {
               path="/add-new-vehicle"
               component={AddVehicle}
             />
-            <PrivateRoute
-              exact
-              path="/edit-vehicle"
-              mode="edit"
-              component={AddVehicle}
-            />
+            <PrivateRoute exact path="/edit-vehicle" component={AddVehicle} />
+            <PrivateRoute exact path="/my-vehicles" component={MyVehicles} />
           </Switch>
         </Router>
         <Footer />

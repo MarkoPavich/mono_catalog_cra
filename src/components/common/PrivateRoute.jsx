@@ -8,10 +8,13 @@ const PrivateRoute = observer(({ component: Component, ...rest }) => {
   const { authState, validateLogin } = useAuthStore();
   const { isAuthenticated } = authState;
 
+  // Constantly verify auth token
   useEffect(() => {
     validateLogin();
   });
 
+  // If user is authenticated, load privateRoute component
+  // If not, try to authenticate via localStorage token
   return (
     <Route
       // eslint-disable-next-line react/jsx-props-no-spreading

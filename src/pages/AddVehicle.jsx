@@ -3,11 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
 import './AddVehicle.css';
-import AddVehicleForm from './AddVehicleForm';
+import AddVehicleForm from './addVehicle/AddVehicleForm';
+import { useVehiclesStore } from '../StoreProvider';
+import Spinner from '../components/common/Spinner';
 
 const AddVehicle = observer(({ t }) => {
   const { search } = useLocation();
   const vehicleID = search.slice(4); // Vehicle ID from location param
+  const { isLoading } = useVehiclesStore();
 
   return (
     <main className="f-addVehicle-top-container">
@@ -18,7 +21,7 @@ const AddVehicle = observer(({ t }) => {
           </span>
         </header>
         <div className="f-addVehicle-form-container">
-          <AddVehicleForm vehicleID={vehicleID} />
+          {isLoading ? <Spinner /> : <AddVehicleForm vehicleID={vehicleID} />}
         </div>
       </div>
     </main>

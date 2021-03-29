@@ -38,6 +38,8 @@
 
   font-size: 12px;
   color: black;
+
+  outline: none;
 }
 
 .c-carsGrid-filters-mobile-toggle:hover,

@@ -13,7 +13,9 @@ function NavbarResponsiveUserMenu({ isSmallScreen, t }) {
         <li>
           <a href="/#/add-new-vehicle">{t('navOptions.addVehicle')}</a>
         </li>
-        <li>{t('navOptions.myVehicles')}</li>
+        <li>
+          <a href="/#/my-vehicles">{t('navOptions.myVehicles')}</a>
+        </li>
         <li onClick={requestLogout}>{t('common.logout')}</li>
       </ul>
     </div>
@@ -21,16 +23,6 @@ function NavbarResponsiveUserMenu({ isSmallScreen, t }) {
 
   if (!authState.isAuthenticated) return <></>;
   return isSmallScreen ? <UserMenuSmallScreen /> : <UserMenu />;
-}
-
-function toggleMobileMenu() {
-  const activeClassName = 'l-navbar-user-menu-mobile mobile-menu-active';
-  const inactiveClassName = 'l-navbar-user-menu-mobile';
-  const toggleElem = document.querySelector('#l-navbar-user-menu-mobile');
-
-  if (toggleElem.className === activeClassName)
-    toggleElem.className = inactiveClassName;
-  else toggleElem.className = activeClassName;
 }
 
 export default withNamespaces()(NavbarResponsiveUserMenu);

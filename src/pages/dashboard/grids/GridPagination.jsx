@@ -90,7 +90,7 @@ const GridPagination = observer(({ t }) => {
         <PageLinks />
       </div>
       <div className="c-carsGrid-pagination-next-box">
-        {currentPage !== pages ? (
+        {currentPage !== pages && pages !== 0 ? (
           <span
             tabIndex={0}
             role="button"

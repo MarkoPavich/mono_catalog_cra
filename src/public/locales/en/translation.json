@@ -70,7 +70,7 @@
 
     "vehicleForm": {
         "header": "Add Vehicle",
-        "editHeader": "Fahrzeugdaten bearbeiten",
+        "editHeader": "Edit vehicle",
         "basicInfoHeader": "Basic info",
         "make": "Make",
         "model": "Model",
@@ -119,5 +119,20 @@
         "modelNameDesc": "Make name - descending",
         "priceAsc": "Price - ascending",
         "priceDesc": "Price - descending"
+    },
+
+    "pageMyVehicles": {
+        "pageHeader": "My vehicles",
+        "headerBackHref": "Return",
+        "headerResCount": "Results",
+        "vehicleCardPrice": "price",
+        "vehiceCardID": "vehicle ID",
+        "vehicleCardDelBtn": "Delete"
+    },
+
+    "noResultsComponent": {
+        "header": "No Results",
+        "resetBtn": "Reset demo"
     }
+
 }

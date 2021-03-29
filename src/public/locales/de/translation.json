@@ -70,6 +70,7 @@
 
     "vehicleForm": {
         "header": "Fahrzeug hinzufügen",
+        "editHeader": "Fahrzeugdaten bearbeiten",
         "basicInfoHeader": "Basisinformation",
         "make": "Automarke",
         "model": "Model",
@@ -118,5 +119,19 @@
         "modelNameDesc": "Machen - absteigend",
         "priceAsc": "Preis - aufsteigend",
         "priceDesc": "Preis - absteigend"
+    },
+
+    "pageMyVehicles": {
+        "pageHeader": "Meine Fahrzeuge ",
+        "headerBackHref": "Rückkehr ",
+        "headerResCount": "Ergebnisse zähle",
+        "vehicleCardPrice": "Preis",
+        "vehiceCardID": "Fahrzeugkennnummer",
+        "vehicleCardDelBtn": "Löschen "
+    },
+
+    "noResultsComponent": {
+        "header": "Keine Ergebnisse",
+        "resetBtn": "Demo zurücksetzen"
     }
 }

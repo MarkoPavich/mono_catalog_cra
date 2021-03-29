@@ -31,12 +31,17 @@ export const useUIStore = () => {
   return uiStore;
 };
 
-export const useFormsStore = () => {
-  const { formsStore } = useContext(StoreContext);
-  return formsStore;
+export const useAddVehicleFormStore = () => {
+  const { addVehicleFormStore } = useContext(StoreContext);
+  return addVehicleFormStore;
 };
 
 export const useVehiclesStore = () => {
   const { vehiclesStore } = useContext(StoreContext);
   return vehiclesStore;
+};
+
+export const useLoginFormStore = () => {
+  const { loginFormStore } = useContext(StoreContext);
+  return loginFormStore;
 };

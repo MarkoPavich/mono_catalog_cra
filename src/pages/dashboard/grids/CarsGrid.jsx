@@ -6,6 +6,7 @@ import { useVehiclesStore, useUIStore } from '../../../StoreProvider';
 import CarCard from '../cards/CarCard';
 import HeaderToggleOrSpan from './HeaderToggleOrSpan';
 import GridPagination from './GridPagination';
+import NoResults from '../../../components/common/NoResults';
 import './CarsGrid.css';
 
 const CarsGrid = observer(({ t }) => {
@@ -44,6 +45,15 @@ const CarsGrid = observer(({ t }) => {
           </select>
         </div>
       </header>
+      {paginatedVehicles.length !== 0 ? (
+        <div className="c-carsGrid-card-container">
+          {paginatedVehicles.map((vehicle) => (
+            <CarCard key={nanoid()} vehicle={vehicle} t={t} />
+          ))}
+        </div>
+      ) : (
+        <NoResults />
+      )}
       <div className="c-carsGrid-card-container">
         {paginatedVehicles.map((vehicle) => (
           <CarCard key={nanoid()} vehicle={vehicle} t={t} />

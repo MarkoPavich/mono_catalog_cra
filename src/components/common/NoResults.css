@@ -1,0 +1,44 @@
+.c-noResults-container{
+	width: 100%;
+
+	margin-top: 80px;
+	
+	display: flex;
+	justify-content: center;
+}
+
+.c-noResults-inner-container{
+	font-size: 23px;
+	font-weight: bold;
+
+	font-style: italic;
+
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+	padding: 20px 40px 20px 40px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.c-noResults-inner-container button{
+	margin-top: 20px;
+
+	outline: none;
+	border: none;
+	border-radius: 10px;
+
+	width: 150px;
+	height: 28px;
+
+	background-color: #82a5b5;
+	color: white;
+
+	transition: background-color 0.5s;
+}
+
+.c-noResults-inner-container button:hover{
+	cursor: pointer;
+	background-color: #0887c1;
+}

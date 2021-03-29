@@ -119,5 +119,19 @@
         "modelNameDesc": "Marci - od Z do A",
         "priceAsc": "Cijeni - jeftinije prema skuplje",
         "priceDesc": "Cijeni - skuplje prema jeftinije"
+    },
+
+    "pageMyVehicles": {
+        "pageHeader": "Moja vozila",
+        "headerBackHref": "Povratak",
+        "headerResCount": "Broj rezultata",
+        "vehicleCardPrice": "cijena",
+        "vehiceCardID": "ID oznaka",
+        "vehicleCardDelBtn": "Izbriši"
+    },
+
+    "noResultsComponent": {
+        "header": "Nema rezultata",
+        "resetBtn": "Resetiraj demo"
     }
 }

@@ -30,7 +30,7 @@ const UserMenuSmallScreen = observer(({ t }) => {
             <a href="/#/add-new-vehicle">{t('navOptions.addVehicle')}</a>
           </li>
           <li>
-            <a href="#">{t('navOptions.myVehicles')}</a>
+            <a href="#/my-vehicles">{t('navOptions.myVehicles')}</a>
           </li>
         </ul>
         <ul>

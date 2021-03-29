@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
-import { useAuthStore, useFormsStore } from '../../../StoreProvider';
+import { useAuthStore, useLoginFormStore } from '../../StoreProvider';
 
 function hideModalRegisterForm() {
   const modal = document.querySelector('#a-login-modal-container');
@@ -15,7 +15,7 @@ const ModalRegisterForm = observer(({ t }) => {
     setRegisterForm,
     submitRegister,
     clearRegisterForm,
-  } = useFormsStore();
+  } = useLoginFormStore();
   const { username, email, password, password2, touCheck } = registerForm;
 
   useEffect(() => {

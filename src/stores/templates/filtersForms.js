@@ -12,11 +12,11 @@ export default function filtersForms() {
   // Parse available data to programmaticly create boolean filter forms
   // default to filter off
   Object.keys(carBodies).forEach((key) => {
-    bodyParams[carBodies[key]] = false;
+    bodyParams[carBodies[key].name] = false;
   });
 
   Object.keys(fuelTypes).forEach((key) => {
-    fuelParams[fuelTypes[key]] = false;
+    fuelParams[fuelTypes[key].name] = false;
   });
 
   return { bodyParams, fuelParams, makeParam, sortFilter };

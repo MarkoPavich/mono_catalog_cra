@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 import i18n from '../../i18n'; // Translations library
+import { inputStatus } from '../templates/forms';
 
 export function validateAuthForm(data) {
   let isValid = true;
@@ -79,4 +81,20 @@ export function validateVehicleForm(data) {
     isValid,
     tooltips,
   };
+}
+
+// forms-handling stores helper function
+export function markFields(form, tooltips) {
+  // Loop over every field in form
+  Object.keys(tooltips).forEach((key) => {
+    if (tooltips[key]) {
+      // truthy tooltip means error
+      form[key].class = inputStatus.error; // Apply error CSS classname to field and provide tooltip
+      form[key].tooltip = tooltips[key];
+    } else {
+      // falsy tooltip - revert field classname and clear tooltip
+      form[key].class = inputStatus.normal;
+      form[key].tooltip = '';
+    }
+  });
 }
