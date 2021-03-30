@@ -25,7 +25,7 @@ const AddVehicleForm = observer(({ t, vehicleID }) => {
     price,
   } = vehicleForm;
 
-  const { carsData } = useVehiclesStore();
+  const { carsData, isLoading } = useVehiclesStore();
   const { carMakes, carBodies, fuelTypes } = carsData;
 
   async function handleSubmit(event) {
@@ -35,9 +35,9 @@ const AddVehicleForm = observer(({ t, vehicleID }) => {
   }
 
   useEffect(() => {
-    if (vehicleID) setEditMode(vehicleID);
+    if (vehicleID && !isLoading) setEditMode(vehicleID);
     else clearVehicleForm();
-  }, [carMakes]);
+  }, []);
 
   return (
     <form className="f-addVehicle-form">
