@@ -6,14 +6,14 @@ import AlertTemplate from 'react-alert-template-basic';
 import WindowResizeMonitor from './common/WindowResizeMonitor';
 import Navbar from './layout/navbar/Navbar';
 import Footer from './layout/footer/Footer';
-import Login from '../pages/Login';
-import Dashboard from '../pages/Dashboard';
-import MyVehicles from '../pages/MyVehicles';
+import Login from '../pages/login/Login';
+import Dashboard from '../pages/dashboard/Dashboard';
+import MyVehicles from '../pages/vehicle/MyVehicles';
 import StoreProvider from '../StoreProvider';
 import PrivateRoute from './common/PrivateRoute';
 
 import Alert from './common/Alert';
-import AddVehicle from '../pages/AddVehicle';
+import AddVehicle from '../pages/vehicle/AddVehicle';
 
 const alertOptions = {
   timeout: 5000,

@@ -1,9 +1,9 @@
-import AuthStore from './auth';
-import MessageStore from './message';
-import UIStore from './ui';
-import AddVehicleFormStore from './addVehicleForm';
-import VehiclesStore from './vehicles';
-import LoginFormStore from './loginForm';
+import AuthStore from './AuthStore';
+import MessageStore from './MessageStore';
+import UIStore from './UIStore';
+import AddVehicleFormStore from '../pages/vehicle/AddVehicleFormStore';
+import VehiclesStore from './VehiclesStore';
+import LoginFormStore from '../pages/login/LoginFormStore';
 
 // init all stores and return as rootStore
 export default function createRootStore() {

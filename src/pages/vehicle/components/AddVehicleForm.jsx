@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
-import { useAddVehicleFormStore, useVehiclesStore } from '../../StoreProvider';
+import {
+  useAddVehicleFormStore,
+  useVehiclesStore,
+} from '../../../StoreProvider';
 
 const AddVehicleForm = observer(({ t, vehicleID }) => {
   const {
@@ -35,9 +38,10 @@ const AddVehicleForm = observer(({ t, vehicleID }) => {
   }
 
   useEffect(() => {
-    if (vehicleID) setEditMode(vehicleID);
-    else clearVehicleForm();
-  }, [carMakes]);
+    if (vehicleID) {
+      setEditMode(vehicleID);
+    } else clearVehicleForm();
+  }, [vehicleID]);
 
   return (
     <form className="f-addVehicle-form">

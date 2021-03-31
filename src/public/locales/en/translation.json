@@ -58,7 +58,8 @@
         "userExists": "User with that username already exists",
         "emailExists": "User with that email already exists",
         "invalidLogin": "Username or password incorrect",
-        "invalidVehicleForm": "Please correct fields marked in red"
+        "invalidVehicleForm": "Please correct fields marked in red",
+        "noMatchingVehicleID": "No matching vehicle ID found"
     },
 
     "commonConfirmations": {

@@ -76,14 +76,9 @@ class VehiclesServices {
     return { carMakes, fuelTypes, bodyTypes, models };
   }
 
-  static async updateVehicle(
-    formatedVehicleData,
-    editID,
-    vehiclesList,
-    models
-  ) {
-    // Copy list - avoids mutating state, and prevents ESLint no reassign warning
-    const updatedVehicles = vehiclesList.slice();
+  static async updateVehicle(formatedVehicleData, editID) {
+    const vehiclesList = await this.getVehiclesList();
+    const { models } = await this.getVehiclesData();
     // Update models data and format model obj for new/updated vehicle
     const { carModel, updatedModels } = this.handleModels(
       formatedVehicleData,
@@ -99,18 +94,20 @@ class VehiclesServices {
     // simulate going to server - delay execution
     await new Promise((resolve) => setTimeout(resolve, 500));
     const index = vehiclesList.findIndex((vehicle) => vehicle.id === editID);
-    updatedVehicles[index] = updatedVehicle;
+    vehiclesList[index] = updatedVehicle;
 
     // Make persistent
     localStorage.setItem('vehicleModels', JSON.stringify(models));
-    localStorage.setItem('vehicles', JSON.stringify(updatedVehicles));
+    localStorage.setItem('vehicles', JSON.stringify(vehiclesList));
 
-    return { updatedVehicles, updatedModels }; // Return updated lists
+    return { vehiclesList, updatedModels }; // Return updated lists
   }
 
   // Same as the above
-  static async addNewVehicle(formatedVehicleData, vehiclesList, models) {
-    const updatedVehicles = vehiclesList.slice();
+  static async addNewVehicle(formatedVehicleData) {
+    const vehiclesList = await this.getVehiclesList();
+    const { models } = await this.getVehiclesData();
+
     const { carModel, updatedModels } = this.handleModels(
       formatedVehicleData,
       models
@@ -124,16 +121,17 @@ class VehiclesServices {
 
     // Delay
     await new Promise((resolve) => setTimeout(resolve, 500));
-    updatedVehicles.push(newVehicle);
+    vehiclesList.push(newVehicle);
 
     // Make permanent
     localStorage.setItem('vehicleModels', JSON.stringify(updatedModels));
-    localStorage.setItem('vehicles', JSON.stringify(updatedVehicles));
+    localStorage.setItem('vehicles', JSON.stringify(vehiclesList));
 
-    return { updatedVehicles, updatedModels };
+    return { vehiclesList, updatedModels };
   }
 
-  static async deleteVehicle(id, vehiclesList) {
+  static async deleteVehicle(id) {
+    const vehiclesList = await this.getVehiclesList();
     await new Promise((resolve) => setTimeout(resolve, 500));
     const updatedVehicles = vehiclesList.filter((vehicle) => vehicle.id !== id);
 

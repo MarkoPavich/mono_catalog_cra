@@ -20,6 +20,7 @@ const Alert = observer(({ t }) => {
     emailExists: t('commonErrors.emailExists'),
     invalidLogin: t('commonErrors.invalidLogin'),
     invalidVehicleForm: t('commonErrors.invalidVehicleForm'),
+    noMatchingVehicleID: t('commonErrors.noMatchingVehicleID'),
   };
 
   const commonConfirmationResponses = {

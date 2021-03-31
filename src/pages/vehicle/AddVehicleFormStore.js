@@ -1,7 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { makeObservable, observable, action, runInAction } from 'mobx';
-import { validateVehicleForm, markFields } from './services/formsValidators';
-import { vehicleForm } from './templates/forms';
+import {
+  validateVehicleForm,
+  markFields,
+} from '../../stores/services/formsValidators';
+import { vehicleForm } from '../../stores/templates/forms';
 
 export default class AddVehicleFormStore {
   constructor(vehiclesStore, messages) {
@@ -72,23 +75,28 @@ export default class AddVehicleFormStore {
   setEditMode = (vehicleID) => {
     // Get vehicle object
     const vehicle = this.vehiclesStore.getVehicle(vehicleID);
-    // get make object
-    let make;
-    Object.keys(this.vehiclesStore.carsData.carMakes).forEach((key) => {
-      if (this.vehiclesStore.carsData.carMakes[key].id === vehicle.make.id)
-        make = key;
-    });
-    // Adapt data
-    const vehicleData = {
-      ...vehicle,
-      model: vehicle.model.name,
-      bodyType: vehicle.bodyType.id,
-      fuelType: vehicle.fuelType.id,
-      make,
-    };
-    // Apply data to form
-    Object.keys(this.vehicleForm).forEach((key) => {
-      this.vehicleForm[key].value = vehicleData[key];
-    });
+    if (vehicle) {
+      // get make object
+      let make;
+      Object.keys(this.vehiclesStore.carsData.carMakes).forEach((key) => {
+        if (this.vehiclesStore.carsData.carMakes[key].id === vehicle.make.id)
+          make = key;
+      });
+      // Adapt data
+      const vehicleData = {
+        ...vehicle,
+        model: vehicle.model.name,
+        bodyType: vehicle.bodyType.id,
+        fuelType: vehicle.fuelType.id,
+        make,
+      };
+      // Apply data to form
+      Object.keys(this.vehicleForm).forEach((key) => {
+        this.vehicleForm[key].value = vehicleData[key];
+      });
+    }
+    // Vehicle with provided ID not found
+    else
+      this.messages.commonError(this.messages.commonErrors.noMatchingVehicleID);
   };
 }

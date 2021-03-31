@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
 import { showModalRegisterForm } from './ModalRegisterForm';
-import { useAuthStore, useLoginFormStore } from '../../StoreProvider';
+import { useAuthStore, useLoginFormStore } from '../../../StoreProvider';
 
 const LoginForm = observer(({ t }) => {
   const { authState } = useAuthStore();

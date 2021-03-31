@@ -98,13 +98,14 @@ class VehiclesStore {
           carModels: vehiclesData.models,
           vehicles,
         };
+        this.isLoading = false; // Mark content requests complete
       });
     } catch (error) {
       this.messages.createError('Network error! Please try again later'); // TODO - Make translations
+      runInAction(() => {
+        this.isLoading = false;
+      });
     }
-    runInAction(() => {
-      this.isLoading = false; // Mark content requests complete
-    });
   }
 
   get activeFilters() {
@@ -211,10 +212,7 @@ class VehiclesStore {
   deleteVehicle = async (id) => {
     this.isLoading = true;
     try {
-      const updatedVehicles = await vehiclesServices.deleteVehicle(
-        id,
-        this.carsData.vehicles
-      );
+      const updatedVehicles = await vehiclesServices.deleteVehicle(id);
 
       runInAction(() => {
         this.carsData.vehicles = updatedVehicles;
@@ -249,20 +247,12 @@ class VehiclesStore {
 
     // Save new vehicle or overwrite existing
     try {
-      const { updatedVehicles, updatedModels } = editID
-        ? await vehiclesServices.updateVehicle(
-            newVehicle,
-            editID,
-            this.carsData.vehicles,
-            this.carsData.carModels
-          )
-        : await vehiclesServices.addNewVehicle(
-            newVehicle,
-            this.carsData.vehicles,
-            this.carsData.carModels
-          );
+      const { vehiclesList, updatedModels } = editID
+        ? await vehiclesServices.updateVehicle(newVehicle, editID)
+        : await vehiclesServices.addNewVehicle(newVehicle);
+
       runInAction(() => {
-        this.carsData.vehicles = updatedVehicles;
+        this.carsData.vehicles = vehiclesList;
         this.carsData.carModels = updatedModels;
       });
     } catch (error) {

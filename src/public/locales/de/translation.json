@@ -58,7 +58,8 @@
         "userExists": "Benutzername existiert bereits",
         "emailExists": "Benutzer mit dieser E-Mail existiert bereits",
         "invalidLogin": "Benutzername oder Passwort falsch",
-        "invalidVehicleForm": "Bitte korrigieren Sie rot markierte Felder"
+        "invalidVehicleForm": "Bitte korrigieren Sie rot markierte Felder",
+        "noMatchingVehicleID": "Keine passende Fahrzeug-ID gefunden"
     },
 
     "commonConfirmations": {

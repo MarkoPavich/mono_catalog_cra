@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
 import './AddVehicle.css';
-import AddVehicleForm from './addVehicle/AddVehicleForm';
-import { useVehiclesStore } from '../StoreProvider';
-import Spinner from '../components/common/Spinner';
+import AddVehicleForm from './components/AddVehicleForm';
+import { useVehiclesStore } from '../../StoreProvider';
+import Spinner from '../../components/common/Spinner';
 
 const AddVehicle = observer(({ t }) => {
   const { search } = useLocation();

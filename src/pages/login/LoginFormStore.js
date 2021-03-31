@@ -1,6 +1,9 @@
 import { makeObservable, observable, action } from 'mobx';
-import { validateAuthForm, markFields } from './services/formsValidators';
-import { loginForm, registerForm } from './templates/forms';
+import {
+  validateAuthForm,
+  markFields,
+} from '../../stores/services/formsValidators';
+import { loginForm, registerForm } from '../../stores/templates/forms';
 
 export default class LoginFormStore {
   constructor(authStore) {

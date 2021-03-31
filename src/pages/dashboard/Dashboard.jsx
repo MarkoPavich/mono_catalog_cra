@@ -1,7 +1,7 @@
 import React from 'react';
 import './Dashboard.css';
-import FiltersSidebar from './dashboard/sidebars/FiltersSidebar';
-import CarsGrid from './dashboard/grids/CarsGrid';
+import FiltersSidebar from './components/FiltersSidebar';
+import CarsGrid from './components/CarsGrid';
 
 function Dashboard() {
   return (

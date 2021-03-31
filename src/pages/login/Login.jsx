@@ -2,9 +2,9 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { Redirect } from 'react-router-dom';
 import { withNamespaces } from 'react-i18next';
-import ModalRegisterForm from './login/ModalRegisterForm';
-import LoginForm from './login/LoginForm';
-import { useAuthStore } from '../StoreProvider';
+import ModalRegisterForm from './components/ModalRegisterForm';
+import LoginForm from './components/LoginForm';
+import { useAuthStore } from '../../StoreProvider';
 import './Login.css';
 
 const Login = observer(({ t }) => {

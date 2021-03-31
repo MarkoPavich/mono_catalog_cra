@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import { carMakes, carModels, carBodies, fuelTypes } from './carsData';
 
 const { audi, astonMartin, hyundai } = carMakes;
@@ -7,7 +6,7 @@ const { petrol, diesel, LPG, hybrid, BEV } = fuelTypes;
 
 const vehicles = [
   {
-    id: nanoid(),
+    id: 'Lqg0afLZgwg4_1wjadeJ0',
     make: audi,
     model: carModels[audi.id][0],
     variant: '2.0d',
@@ -22,7 +21,7 @@ const vehicles = [
     price: 6000,
   },
   {
-    id: nanoid(),
+    id: '03W1lE-ao4vB5JS1tX7nd',
     make: astonMartin,
     model: carModels[astonMartin.id][0],
     bodyType: compact,
@@ -37,7 +36,7 @@ const vehicles = [
     price: 50000,
   },
   {
-    id: nanoid(),
+    id: 'TfoVoQEhtHj-lSn5lQ0TG',
     make: hyundai,
     model: carModels[hyundai.id][0],
     fuelType: LPG,
@@ -51,7 +50,7 @@ const vehicles = [
     price: 9000,
   },
   {
-    id: nanoid(),
+    id: '5GKiOfisd3-y-DQ3VLoIE',
     make: audi,
     model: carModels[audi.id][0],
     bodyType: coupe,
@@ -66,7 +65,7 @@ const vehicles = [
     price: 12000,
   },
   {
-    id: nanoid(),
+    id: 'qbqB05FQsuwZJYQ_fq09h',
     make: astonMartin,
     model: carModels[astonMartin.id][0],
     fuelType: BEV,
@@ -81,7 +80,7 @@ const vehicles = [
     price: 89000,
   },
   {
-    id: nanoid(),
+    id: '6Vd4scTVfYDBBOAC3_i5p',
     make: hyundai,
     model: carModels[hyundai.id][0],
     fuelType: petrol,
@@ -95,7 +94,7 @@ const vehicles = [
     price: 7450,
   },
   {
-    id: nanoid(),
+    id: 'Lqg0afsigpwg4_1wjadeJ0',
     make: astonMartin,
     model: carModels[astonMartin.id][0],
     bodyType: compact,
@@ -110,7 +109,7 @@ const vehicles = [
     price: 50000,
   },
   {
-    id: nanoid(),
+    id: '03W1lE-sr78ibnsprt',
     make: hyundai,
     model: carModels[hyundai.id][0],
     fuelType: LPG,
@@ -124,7 +123,7 @@ const vehicles = [
     price: 9000,
   },
   {
-    id: nanoid(),
+    id: 'TfoVoQEhtHj-su4i_srl88',
     make: audi,
     model: carModels[audi.id][0],
     bodyType: coupe,
@@ -139,7 +138,7 @@ const vehicles = [
     price: 12000,
   },
   {
-    id: nanoid(),
+    id: '5GKiOfisd3-y-D99mmkpLoIE',
     make: astonMartin,
     model: carModels[astonMartin.id][0],
     fuelType: BEV,
@@ -154,7 +153,7 @@ const vehicles = [
     price: 89000,
   },
   {
-    id: nanoid(),
+    id: 'qbqBuxpQsuwZJYQ_fb09h',
     make: hyundai,
     model: carModels[hyundai.id][0],
     fuelType: petrol,

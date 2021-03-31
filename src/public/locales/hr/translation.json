@@ -58,7 +58,8 @@
         "userExists": "Korisničko ime već postoji",
         "emailExists": "Email već postoji",
         "invalidLogin": "Neipsravno korisničko ime ili lozinka",
-        "invalidVehicleForm": "Molimo ispraviti polja označena crveno"
+        "invalidVehicleForm": "Molimo ispraviti polja označena crveno",
+        "noMatchingVehicleID": "Ne postoji vozilo s navedenom ID oznakom"
     },
 
     "commonConfirmations": {
