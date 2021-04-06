@@ -1,7 +1,16 @@
 import { makeObservable, observable, action, computed } from 'mobx';
 import i18n from '../i18n';
+import { Dict } from '../types'
 
 class UIStore {
+  availableTranslations: Dict;
+  navbarMobileMenuClasses: Dict;
+  sidebarmenuClasses: Dict;
+  lang: string;
+  screenWidth: number;
+  navbarMobileMenu: string;
+  sidebarFiltersMenu: string;
+
   constructor() {
     // TODO - maybe define this programmatically
     this.availableTranslations = {
@@ -69,7 +78,7 @@ class UIStore {
   };
 
   // Handle language switching, fallback to hr just in case..
-  switchLocale = (lang) => {
+  switchLocale = (lang: string) => {
     const locale =
       this.availableTranslations[lang] || this.availableTranslations.hr;
     this.lang = locale;
@@ -77,7 +86,7 @@ class UIStore {
     localStorage.setItem('i18nextLng', locale); // store lang preference
   };
 
-  setScreenWidth = (width) => {
+  setScreenWidth = (width: number) => {
     this.screenWidth = width;
   };
 
