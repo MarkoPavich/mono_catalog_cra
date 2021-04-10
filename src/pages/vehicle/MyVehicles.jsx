@@ -2,14 +2,14 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { nanoid } from 'nanoid';
 import { withNamespaces } from 'react-i18next';
-import { useVehiclesStore } from '../../StoreProvider';
+import { useMyVehiclesStore } from '../../StoreProvider';
 import VehicleCard from './components/VehicleCard';
 import NoResults from '../../components/common/NoResults';
 import OverlaySpinner from '../../components/common/OverlaySpinner';
 import './MyVehicles.css';
 
 const MyVehicles = observer(({ t }) => {
-  const { carsData, isLoading } = useVehiclesStore();
+  const { carsData, isLoading } = useMyVehiclesStore();
   const { vehicles } = carsData;
 
   return (

@@ -2,8 +2,8 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { nanoid } from 'nanoid';
 import { withNamespaces } from 'react-i18next';
-import { useVehiclesStore, useUIStore } from '../../../StoreProvider';
-import CarCard from '../components/CarCard';
+import { useDashboardStore, useUIStore } from '../../../StoreProvider';
+import CarCard from './CarCard';
 import HeaderToggleOrSpan from './HeaderToggleOrSpan';
 import GridPagination from './GridPagination';
 import NoResults from '../../../components/common/NoResults';
@@ -15,7 +15,7 @@ const CarsGrid = observer(({ t }) => {
     filters,
     sortOptions,
     setSortFilter,
-  } = useVehiclesStore();
+  } = useDashboardStore();
 
   const { carsGridSmallScreen } = useUIStore();
   const { paginatedVehicles, results } = vehiclesList;

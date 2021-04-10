@@ -1,34 +1,15 @@
-import {
-  makeObservable,
-  observable,
-  computed,
-  action,
-  runInAction,
-} from 'mobx';
-import vehiclesServices from './services/vehiclesServices';
-import sortOptions from './mockup/sortOptions';
-import filtersForms from './templates/filtersForms';
+import { makeObservable, observable, action, computed } from 'mobx';
+import sortOptions from '../../stores/mockup/sortOptions';
+import filtersForms from '../../stores/templates/filtersForms';
 
-class VehiclesStore {
-  constructor(messages) {
+class DashboardStore {
+  constructor(messages, dataStore) {
     // Cars dataSets
-    this.carsData = {
-      vehicles: [],
-      carMakes: {},
-      carModels: {},
-      carBodies: {},
-      fuelTypes: {},
-    };
+    this.dataStore = dataStore;
+    this.messages = messages; // MessageStore
 
-    this.isLoading = true;
-
-    this.sortOptions = sortOptions;
-    this.filters = filtersForms();
-
-    this.getVehiclesData(); // Fetch data
-
-    // MessageStore
-    this.messages = messages;
+    this.sortOptions = sortOptions; // Template with predefined sorting capabilities
+    this.filters = filtersForms(); // filters templates with editable properties - observable
 
     // Pagination config
     this.resultsPerPage = 6;
@@ -38,23 +19,23 @@ class VehiclesStore {
 
     // MOBX
     makeObservable(this, {
-      carsData: observable,
       filters: observable,
       currentPage: observable,
-      isLoading: observable,
 
       setBodyParams: action,
       setFuelParams: action,
       setMakeParam: action,
       setSortFilter: action,
-      addVehicle: action,
       selectPage: action,
-      getVehiclesData: action,
-      deleteVehicle: action,
 
       activeFilters: computed,
       vehiclesList: computed,
+      carsData: computed,
     });
+  }
+
+  get carsData() {
+    return this.dataStore.carsData;
   }
 
   // set* functions control inputs
@@ -82,31 +63,6 @@ class VehiclesStore {
   selectPage = (page) => {
     this.currentPage = page;
   };
-
-  async getVehiclesData() {
-    this.isLoading = true; // mark content loading
-    try {
-      const vehiclesData = await vehiclesServices.getVehiclesData();
-      const vehicles = await vehiclesServices.getVehiclesList();
-
-      runInAction(() => {
-        this.carsData = {
-          ...this.carsData,
-          carMakes: vehiclesData.carMakes,
-          carBodies: vehiclesData.bodyTypes,
-          fuelTypes: vehiclesData.fuelTypes,
-          carModels: vehiclesData.models,
-          vehicles,
-        };
-        this.isLoading = false; // Mark content requests complete
-      });
-    } catch (error) {
-      this.messages.createError('Network error! Please try again later'); // TODO - Make translations
-      runInAction(() => {
-        this.isLoading = false;
-      });
-    }
-  }
 
   get activeFilters() {
     const make = this.filters.makeParam; // Set filter by make state
@@ -208,68 +164,6 @@ class VehiclesStore {
         return filteredVehicles;
     }
   };
-
-  deleteVehicle = async (id) => {
-    this.isLoading = true;
-    try {
-      const updatedVehicles = await vehiclesServices.deleteVehicle(id);
-
-      runInAction(() => {
-        this.carsData.vehicles = updatedVehicles;
-      });
-    } catch (error) {
-      this.messages.createError('Network error, please try again later'); // TODO - makeTranslations
-    }
-
-    runInAction(() => {
-      this.isLoading = false;
-    });
-  };
-
-  addVehicle = async (validatedData, editID) => {
-    const make = this.carsData.carMakes[validatedData.make]; // Adapt vehicle make
-
-    // Adapt bodyType and FuelType data for vehicle object model
-    const bodyKey = Object.keys(this.carsData.carBodies).find(
-      (key) => this.carsData.carBodies[key].id === validatedData.bodyType
-    );
-    const fuelKey = Object.keys(this.carsData.fuelTypes).find(
-      (key) => this.carsData.fuelTypes[key].id === validatedData.fuelType
-    );
-
-    // Create new vehicle object with formated params
-    const newVehicle = {
-      ...validatedData,
-      make,
-      bodyType: this.carsData.carBodies[bodyKey],
-      fuelType: this.carsData.fuelTypes[fuelKey],
-    };
-
-    // Save new vehicle or overwrite existing
-    try {
-      const { vehiclesList, updatedModels } = editID
-        ? await vehiclesServices.updateVehicle(newVehicle, editID)
-        : await vehiclesServices.addNewVehicle(newVehicle);
-
-      runInAction(() => {
-        this.carsData.vehicles = vehiclesList;
-        this.carsData.carModels = updatedModels;
-      });
-    } catch (error) {
-      this.messages.createError('Network error, please try again later'); // TODO - makeTranslations
-      return false; // Signal error while storing data
-    }
-    return true; // Signal data stored OK
-  };
-
-  getVehicle = (vehicleID) => {
-    // Find vehicles array index by vehicle ID
-    const index = this.carsData.vehicles.findIndex(
-      (vehicle) => vehicle.id === vehicleID
-    );
-    // Return vehicle object
-    return this.carsData.vehicles[index];
-  };
 }
 
-export default VehiclesStore;
+export default DashboardStore;

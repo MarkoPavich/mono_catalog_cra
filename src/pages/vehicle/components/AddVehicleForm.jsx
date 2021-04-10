@@ -2,19 +2,18 @@ import React, { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
-import {
-  useAddVehicleFormStore,
-  useVehiclesStore,
-} from '../../../StoreProvider';
+import { useAddVehicleStore } from '../../../StoreProvider';
 
 const AddVehicleForm = observer(({ t, vehicleID }) => {
   const {
+    carsData,
     vehicleForm,
     setVehicleForm,
     clearVehicleForm,
     setEditMode,
     submitAddEditvehicle,
-  } = useAddVehicleFormStore();
+  } = useAddVehicleStore();
+
   const {
     make,
     model,
@@ -28,7 +27,6 @@ const AddVehicleForm = observer(({ t, vehicleID }) => {
     price,
   } = vehicleForm;
 
-  const { carsData } = useVehiclesStore();
   const { carMakes, carBodies, fuelTypes } = carsData;
 
   async function handleSubmit(event) {

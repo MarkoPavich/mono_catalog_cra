@@ -128,7 +128,8 @@
         "headerResCount": "Broj rezultata",
         "vehicleCardPrice": "cijena",
         "vehiceCardID": "ID oznaka",
-        "vehicleCardDelBtn": "Izbriši"
+        "vehicleCardDelBtn": "Izbriši",
+        "deleteConfirmation": "Vozilo je izbrisano"
     },
 
     "noResultsComponent": {

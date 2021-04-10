@@ -5,6 +5,7 @@ import { carModels } from '../mockup/carsData';
 
 class VehiclesServices {
   static async getVehiclesList() {
+    await new Promise((resolve) => setTimeout(resolve, 500));
     const vehiclesList =
       JSON.parse(localStorage.getItem('vehicles')) || vehicles;
 

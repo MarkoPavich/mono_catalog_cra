@@ -1,0 +1,107 @@
+import {
+  makeObservable,
+  observable,
+  computed,
+  action,
+  runInAction,
+} from 'mobx';
+import vehiclesServices from './services/vehiclesServices';
+
+// This is a generic store serving vehicles related data
+// This store also facilitates communication between component specific stores..
+// ..and CRUD related services - a liaison, of sorts..
+
+class CarsDataStore {
+  constructor(messages) {
+    this.carsData = {
+      vehicles: [],
+      carMakes: {},
+      carModels: {},
+      carBodies: {},
+      fuelTypes: {},
+    };
+
+    this.internalLoading = false; // This store is loading data
+    this.externalLoading = false; // Some other store is loading data
+
+    this.messages = messages;
+
+    makeObservable(this, {
+      carsData: observable,
+      internalLoading: observable,
+      externalLoading: observable,
+
+      getVehiclesData: action,
+      setLoading: action,
+      clearLoading: action,
+      addUpdateVehicle: action,
+      deleteVehicle: action,
+
+      isLoading: computed,
+    });
+
+    this.getVehiclesData(); // Initial load data
+  }
+
+  async getVehiclesData() {
+    this.internalLoading = true; // mark content loading
+    try {
+      const vehiclesData = await vehiclesServices.getVehiclesData();
+      const vehicles = await vehiclesServices.getVehiclesList();
+
+      runInAction(() => {
+        this.carsData = {
+          ...this.carsData,
+          carMakes: vehiclesData.carMakes,
+          carBodies: vehiclesData.bodyTypes,
+          fuelTypes: vehiclesData.fuelTypes,
+          carModels: vehiclesData.models,
+          vehicles,
+        };
+      });
+    } catch (error) {
+      this.messages.createError('Network error! Please try again later'); // TODO - Make translations
+    }
+    runInAction(() => {
+      this.internalLoading = false; // mark content loaded
+    });
+  }
+
+  get isLoading() {
+    // Return false only if everything stopped loading
+    return this.internalLoading || this.externalLoading;
+  }
+
+  // Proxy data to vehiclesServices, and update store - error handling left to pageStores
+  async addUpdateVehicle(vehicleData, editID) {
+    const { vehiclesList, updatedModels } = editID
+      ? await vehiclesServices.updateVehicle(vehicleData, editID)
+      : await vehiclesServices.addNewVehicle(vehicleData);
+
+    runInAction(() => {
+      this.carsData = {
+        ...this.carsData,
+        vehicles: vehiclesList,
+        carModels: updatedModels,
+      };
+    });
+  }
+
+  // Proxy deletion ID to vehiclesServices, and update this - error handling left to pageStores
+  async deleteVehicle(id) {
+    const updatedVehicles = await vehiclesServices.deleteVehicle(id);
+    runInAction(() => {
+      this.carsData.vehicles = updatedVehicles;
+    });
+  }
+
+  setLoading = () => {
+    this.externalLoading = true;
+  };
+
+  clearLoading = () => {
+    this.externalLoading = false;
+  };
+}
+
+export default CarsDataStore;

@@ -29,7 +29,7 @@ class AuthStore {
   // Exchanges auth token with backend for auth credentials
   getUser = async () => {
     if (this.authState.token !== null) {
-      this.loading = true;
+      this.authState.islLading = true;
 
       try {
         const data = await authServices.validateToken(this.authState.token);
@@ -145,7 +145,7 @@ class AuthStore {
         });
       } else {
         runInAction(() => {
-          this.isLoading = false;
+          this.authState.isLoading = false;
         });
 
         if (data.username) {

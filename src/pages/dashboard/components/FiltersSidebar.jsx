@@ -2,7 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
 import { nanoid } from 'nanoid';
-import { useVehiclesStore, useUIStore } from '../../../StoreProvider';
+import { useDashboardStore, useUIStore } from '../../../StoreProvider';
 import './FiltersSidebar.css';
 
 const SideFilters = observer(({ t }) => {
@@ -13,7 +13,7 @@ const SideFilters = observer(({ t }) => {
     setBodyParams,
     setFuelParams,
     setMakeParam,
-  } = useVehiclesStore();
+  } = useDashboardStore();
 
   const { carMakes, carBodies, fuelTypes } = carsData;
 

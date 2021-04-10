@@ -2,7 +2,7 @@ import React from 'react';
 import { nanoid } from 'nanoid';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
-import { useVehiclesStore } from '../../../StoreProvider';
+import { useDashboardStore } from '../../../StoreProvider';
 
 const GridPagination = observer(({ t }) => {
   const {
@@ -10,7 +10,7 @@ const GridPagination = observer(({ t }) => {
     currentPage,
     maxPageNumLinks,
     selectPage,
-  } = useVehiclesStore();
+  } = useDashboardStore();
   const { pages, firstIndexInRange } = vehiclesList;
 
   // Page links generator function

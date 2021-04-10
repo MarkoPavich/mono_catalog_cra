@@ -1,5 +1,11 @@
 /* eslint-disable no-param-reassign */
-import { makeObservable, observable, action, runInAction } from 'mobx';
+import {
+  makeObservable,
+  observable,
+  action,
+  runInAction,
+  computed,
+} from 'mobx';
 import {
   validateVehicleForm,
   markFields,
@@ -7,12 +13,12 @@ import {
 import { vehicleForm } from '../../stores/templates/forms';
 
 export default class AddVehicleFormStore {
-  constructor(vehiclesStore, messages) {
+  constructor(messages, dataStore) {
     // Instantiate form template
     this.vehicleForm = vehicleForm;
 
-    this.vehiclesStore = vehiclesStore; // used to submit new vehicles
     this.messages = messages; // Notifications on submissions
+    this.dataStore = dataStore; // cars data sets
 
     this.markFields = markFields;
 
@@ -25,7 +31,19 @@ export default class AddVehicleFormStore {
       setEditMode: action,
       clearVehicleForm: action,
       submitAddEditvehicle: action,
+      addVehicle: action,
+
+      carsData: computed,
+      isLoading: computed,
     });
+  }
+
+  get carsData() {
+    return this.dataStore.carsData;
+  }
+
+  get isLoading() {
+    return this.dataStore.isLoading;
   }
 
   // set* functions control inputs
@@ -48,7 +66,7 @@ export default class AddVehicleFormStore {
     this.markFields(this.vehicleForm, status.tooltips);
 
     if (status.isValid) {
-      const isStored = await this.vehiclesStore.addVehicle(data, vehicleID);
+      const isStored = await this.addVehicle(data, vehicleID);
       if (isStored) {
         runInAction(() => {
           this.vehicleForm = vehicleForm; // Clear form
@@ -64,7 +82,7 @@ export default class AddVehicleFormStore {
         return isStored; // Everything OK, proceed to navigate away from form
       }
       // Always false at this point
-      return isStored; // Something wrong, but handled in vehiclesStore
+      return isStored; // Something wrong
     }
 
     this.messages.commonError(this.messages.commonErrors.invalidVehicleForm);
@@ -74,13 +92,12 @@ export default class AddVehicleFormStore {
 
   setEditMode = (vehicleID) => {
     // Get vehicle object
-    const vehicle = this.vehiclesStore.getVehicle(vehicleID);
+    const vehicle = this.getVehicle(vehicleID);
     if (vehicle) {
       // get make object
       let make;
-      Object.keys(this.vehiclesStore.carsData.carMakes).forEach((key) => {
-        if (this.vehiclesStore.carsData.carMakes[key].id === vehicle.make.id)
-          make = key;
+      Object.keys(this.carsData.carMakes).forEach((key) => {
+        if (this.carsData.carMakes[key].id === vehicle.make.id) make = key;
       });
       // Adapt data
       const vehicleData = {
@@ -98,5 +115,43 @@ export default class AddVehicleFormStore {
     // Vehicle with provided ID not found
     else
       this.messages.commonError(this.messages.commonErrors.noMatchingVehicleID);
+  };
+
+  addVehicle = async (validatedData, editID) => {
+    const make = this.carsData.carMakes[validatedData.make]; // Adapt vehicle make
+
+    // Adapt bodyType and FuelType data for vehicle object model
+    const bodyKey = Object.keys(this.carsData.carBodies).find(
+      (key) => this.carsData.carBodies[key].id === validatedData.bodyType
+    );
+    const fuelKey = Object.keys(this.carsData.fuelTypes).find(
+      (key) => this.carsData.fuelTypes[key].id === validatedData.fuelType
+    );
+
+    // Create new vehicle object with formated params
+    const newVehicle = {
+      ...validatedData,
+      make,
+      bodyType: this.carsData.carBodies[bodyKey],
+      fuelType: this.carsData.fuelTypes[fuelKey],
+    };
+
+    // Save new vehicle or overwrite existing
+    try {
+      await this.dataStore.addUpdateVehicle(newVehicle, editID);
+    } catch (error) {
+      this.messages.createError('Some type of error occured'); // TODO - error handling
+      return false; // Signal error while storing data
+    }
+    return true; // Signal data stored OK
+  };
+
+  getVehicle = (vehicleID) => {
+    // Find vehicles array index by vehicle ID
+    const index = this.carsData.vehicles.findIndex(
+      (vehicle) => vehicle.id === vehicleID
+    );
+    // Return vehicle object
+    return this.carsData.vehicles[index];
   };
 }

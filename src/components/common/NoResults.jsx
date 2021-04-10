@@ -1,11 +1,12 @@
 import React from 'react';
+import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
-import { useVehiclesStore } from '../../StoreProvider';
+import { useCarsDataStore } from '../../StoreProvider';
 import Spinner from './Spinner';
 import './NoResults.css';
 
-function NoResults({ t }) {
-  const { isLoading } = useVehiclesStore();
+const NoResults = observer(({ t }) => {
+  const { isLoading } = useCarsDataStore();
 
   function resetDemo() {
     localStorage.clear();
@@ -24,6 +25,6 @@ function NoResults({ t }) {
       </div>
     </div>
   );
-}
+});
 
 export default withNamespaces()(NoResults);
