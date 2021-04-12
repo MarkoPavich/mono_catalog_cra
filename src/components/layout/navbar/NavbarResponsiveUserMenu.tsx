@@ -3,7 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../../../StoreProvider';
 import UserMenuSmallScreen from './UserMenuSmallScreen';
 
-function NavbarResponsiveUserMenu({ isSmallScreen }: { isSmallScreen: boolean }) {
+function NavbarResponsiveUserMenu({
+  isSmallScreen,
+}: {
+  isSmallScreen: boolean;
+}) {
   const { t } = useTranslation();
   const { requestLogout, authState } = useAuthStore();
 

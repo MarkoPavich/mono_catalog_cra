@@ -14,7 +14,7 @@ export default class LoginFormStore {
   authStore: AuthStore;
   markFields: typeof markFields;
   modalRegisterClassNames: Dict;
-  modalRegisterStatus: string
+  modalRegisterStatus: string;
 
   constructor(authStore: AuthStore) {
     // Instantiate form
@@ -28,7 +28,7 @@ export default class LoginFormStore {
     this.modalRegisterClassNames = {
       show: 'a-login-modal-container modal-form-active',
       hide: 'a-login-modal-container',
-    }
+    };
 
     this.modalRegisterStatus = this.modalRegisterClassNames.hide;
 
@@ -49,11 +49,11 @@ export default class LoginFormStore {
 
   showModalRegisterForm = () => {
     this.modalRegisterStatus = this.modalRegisterClassNames.show;
-  }
+  };
 
   hideModalRegisterForm = () => {
     this.modalRegisterStatus = this.modalRegisterClassNames.hide;
-  }
+  };
 
   setLoginForm = (event: ChangeEvent<HTMLInputElement>) => {
     this.loginForm[event.target.name].value = event.target.value;
@@ -62,7 +62,10 @@ export default class LoginFormStore {
   setRegisterForm = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.type !== 'checkbox')
       this.registerForm[event.target.name].value = event.target.value;
-    else this.registerForm[event.target.name].value = event.target.checked.toString();
+    else
+      this.registerForm[
+        event.target.name
+      ].value = event.target.checked.toString();
   };
 
   clearRegisterForm = () => {

@@ -1,5 +1,5 @@
 import { carMakes, carModels, carBodies, fuelTypes } from './carsData';
-import { Vehicle } from '../../types'; 
+import { Vehicle } from '../../types';
 
 const { audi, astonMartin, hyundai } = carMakes;
 const { sedan, compact, stationWagon, coupe, suv } = carBodies;

@@ -76,7 +76,7 @@ class CarsDataStore implements iDataStore {
         };
       });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       this.messages.createError('Network error! Please try again later'); // TODO - Make translations
     }
     runInAction(() => {

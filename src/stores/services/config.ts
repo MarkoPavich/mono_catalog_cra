@@ -1,4 +1,4 @@
-export const apiBaseUrl = 'http://localhost:8000/api';
+export const apiBaseUrl = 'http://mono-car-catalog.duckdns.org/api';
 
 export const postOptions = JSON.stringify({
   method: 'POST',

@@ -11,7 +11,7 @@ const ModalRegisterForm = observer(() => {
     submitRegister,
     clearRegisterForm,
     hideModalRegisterForm,
-    modalRegisterStatus
+    modalRegisterStatus,
   } = useLoginFormStore();
   const { username, email, password, password2, touCheck } = registerForm;
   const { t } = useTranslation();

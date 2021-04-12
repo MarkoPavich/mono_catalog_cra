@@ -7,8 +7,9 @@ const VehicleCard = observer(({ vehicle }: { vehicle: Vehicle }) => {
   const { t } = useTranslation();
   const { deleteVehicle } = useMyVehiclesStore();
   const { manufactureDate, make, model, variant, img, price, id } = vehicle;
-  const header = `${manufactureDate.slice(0, 4)}. ${make.name} ${model.name
-    } ${variant}`;
+  const header = `${manufactureDate.slice(0, 4)}. ${make.name} ${
+    model.name
+  } ${variant}`;
 
   return (
     <div className="p-myVehicles-carCard-unit">

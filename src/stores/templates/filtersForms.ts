@@ -2,8 +2,8 @@ import { carBodies, fuelTypes } from '../mockup/carsData';
 import sortOptions from '../mockup/sortOptions';
 
 type ParamFilters = {
-  [param: string]: boolean
-}
+  [param: string]: boolean;
+};
 
 export default function filtersForms() {
   // Filtering params

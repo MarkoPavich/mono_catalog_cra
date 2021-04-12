@@ -1,9 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import { useUIStore } from '../../../StoreProvider';
 
-function HeaderToggleOrSpan(
-  { smallScreen, resCount, activeFilters }:
-    { smallScreen: boolean, resCount: number, activeFilters: number }) {
+function HeaderToggleOrSpan({
+  smallScreen,
+  resCount,
+  activeFilters,
+}: {
+  smallScreen: boolean;
+  resCount: number;
+  activeFilters: number;
+}) {
   const { toggleSidebarMenu } = useUIStore();
   const { t } = useTranslation();
 

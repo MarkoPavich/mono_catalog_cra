@@ -6,7 +6,7 @@ type LoginData = {
   token: string;
   username?: string;
   email?: string;
-}
+};
 
 class authServices {
   static async validateToken(token: string) {

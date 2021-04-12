@@ -10,7 +10,7 @@ class DashboardStore {
   dataStore: CarsDataStore;
   messages: MessageStore;
   sortOptions: typeof sortOptions;
-  filters: ReturnType<typeof filtersForms>
+  filters: ReturnType<typeof filtersForms>;
   resultsPerPage: number;
   maxPageNumLinks: number;
   currentPage: number;

@@ -5,7 +5,12 @@ import { useAuthStore, useLoginFormStore } from '../../../StoreProvider';
 
 const LoginForm = observer(() => {
   const { authState } = useAuthStore();
-  const { loginForm, setLoginForm, submitLogin, showModalRegisterForm } = useLoginFormStore();
+  const {
+    loginForm,
+    setLoginForm,
+    submitLogin,
+    showModalRegisterForm,
+  } = useLoginFormStore();
   const { username, password } = loginForm;
   const { t } = useTranslation();
 
@@ -14,7 +19,7 @@ const LoginForm = observer(() => {
     submitLogin();
   }
 
-  function handleShowRegisterForm(event: React.MouseEvent<HTMLButtonElement>){
+  function handleShowRegisterForm(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     showModalRegisterForm();
   }

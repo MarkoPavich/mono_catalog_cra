@@ -6,7 +6,7 @@ import { Dict } from '../../types';
 
 type Tooltip = {
   [field: string]: string;
-}
+};
 
 export function validateAuthForm(data: Dict) {
   let isValid = true;

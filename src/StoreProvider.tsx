@@ -2,7 +2,7 @@ import { createContext, useContext, ReactNode, ReactElement } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
 import createRootStore from './stores/rootStore';
 
-type RootStore = ReturnType<typeof createRootStore>
+type RootStore = ReturnType<typeof createRootStore>;
 const StoreContext = createContext<RootStore>({} as RootStore);
 
 function StoreProvider({ children }: { children: ReactNode }): ReactElement {
@@ -52,9 +52,9 @@ export const useCarsDataStore = () => {
 export const useAddVehicleStore = () => {
   const { addVehicleStore } = useContext(StoreContext);
   return addVehicleStore;
-}
+};
 
 export const useMyVehiclesStore = () => {
   const { myVehiclesStore } = useContext(StoreContext);
   return myVehiclesStore;
-}
+};

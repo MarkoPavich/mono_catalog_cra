@@ -8,8 +8,10 @@ class VehiclesServices {
   static async getVehiclesList(): Promise<Vehicle[]> {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const inStorage = localStorage.getItem('vehicles')
-    const vehiclesList: Vehicle[] = inStorage ? JSON.parse(inStorage) : vehicles;
+    const inStorage = localStorage.getItem('vehicles');
+    const vehiclesList: Vehicle[] = inStorage
+      ? JSON.parse(inStorage)
+      : vehicles;
 
     return vehiclesList;
   }
@@ -39,7 +41,7 @@ class VehiclesServices {
     // Mockup models for now..
     const inStorage = localStorage.getItem('vehicleModels');
     // Pull from localStorage or defaut to mockups file
-    const models: CarModel = inStorage ? JSON.parse(inStorage) : carModels; 
+    const models: CarModel = inStorage ? JSON.parse(inStorage) : carModels;
 
     // Parse json responses and adapt data for frontend
     const carMakes = await makesResponse.json().then((makesData) => {
@@ -179,8 +181,8 @@ class VehiclesServices {
     // ..and update it with new model
     const newModelID = nanoid();
     const newModel = {
-      [newModelID]: { name: modelName }
-    }
+      [newModelID]: { name: modelName },
+    };
     updatedModels[vehicleData.make.id] = newModel;
 
     return {

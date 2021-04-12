@@ -134,20 +134,25 @@ export default class AddVehicleFormStore {
       this.messages.commonError(this.messages.commonErrors.noMatchingVehicleID);
   };
 
-  addVehicle = async (validatedData: ValidatedVehicleData, editID: string = '') => {
+  addVehicle = async (
+    validatedData: ValidatedVehicleData,
+    editID: string = ''
+  ) => {
     const make = this.carsData.carMakes[validatedData.make]; // Adapt vehicle make
 
     // Adapt bodyType and FuelType data for vehicle object model
-    const bodyKey = Object.keys(this.carsData.carBodies).find(
-      (key) => this.carsData.carBodies[key].id === validatedData.bodyType
-    ) || '';
-    const fuelKey = Object.keys(this.carsData.fuelTypes).find(
-      (key) => this.carsData.fuelTypes[key].id === validatedData.fuelType
-    ) || '';
+    const bodyKey =
+      Object.keys(this.carsData.carBodies).find(
+        (key) => this.carsData.carBodies[key].id === validatedData.bodyType
+      ) || '';
+    const fuelKey =
+      Object.keys(this.carsData.fuelTypes).find(
+        (key) => this.carsData.fuelTypes[key].id === validatedData.fuelType
+      ) || '';
 
     // Create new vehicle object with formated params
-    if(!bodyKey || !fuelKey) throw new Error;
-  
+    if (!bodyKey || !fuelKey) throw new Error();
+
     const newVehicle = {
       ...validatedData,
       make,

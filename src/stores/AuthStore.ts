@@ -1,8 +1,7 @@
 import { makeObservable, observable, action, runInAction } from 'mobx';
 import authServices from './services/authServices';
 import MessageStore from './MessageStore';
-import { AuthState } from '../types';
-import { Dict } from '../types';
+import { AuthState, Dict } from '../types';
 
 // TODO - Replace console.logs with proper error handling, maybe something with returning values and messaging
 

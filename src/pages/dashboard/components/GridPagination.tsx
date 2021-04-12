@@ -67,7 +67,13 @@ const GridPagination = observer(() => {
       );
     }
 
-    return <>{links.map(link => <>{link}</>)}</>
+    return (
+      <>
+        {links.map((link) => (
+          <>{link}</>
+        ))}
+      </>
+    );
   }
 
   return (
