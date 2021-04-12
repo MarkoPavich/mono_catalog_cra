@@ -56,7 +56,11 @@ export default class AddVehicleFormStore {
   }
 
   // set* functions control inputs
-  setVehicleForm = (event: ChangeEvent<HTMLInputElement>) => {
+  setVehicleForm = (
+    event: ChangeEvent<
+      HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => {
     this.vehicleForm[event.target.name].value = event.target.value;
   };
 
@@ -65,6 +69,7 @@ export default class AddVehicleFormStore {
   };
 
   submitAddEditvehicle = async (vehicleID: string) => {
+    // Set vehicle data model
     const data: ValidatedVehicleData = {
       make: this.vehicleForm.make.value,
       model: this.vehicleForm.model.value,

@@ -1,3 +1,4 @@
+import React from 'react';
 import { nanoid } from 'nanoid';
 import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
@@ -70,7 +71,7 @@ const GridPagination = observer(() => {
     return (
       <>
         {links.map((link) => (
-          <>{link}</>
+          <React.Fragment key={nanoid()}>{link}</React.Fragment>
         ))}
       </>
     );

@@ -1,10 +1,11 @@
+import React from 'react';
 import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
 import { useAddVehicleStore } from '../../../StoreProvider';
 
-const AddVehicleForm = observer(({ vehicleID }) => {
+const AddVehicleForm = observer(({ vehicleID }: { vehicleID: string }) => {
   const { t } = useTranslation();
   const {
     carsData,
@@ -30,7 +31,7 @@ const AddVehicleForm = observer(({ vehicleID }) => {
 
   const { carMakes, carBodies, fuelTypes } = carsData;
 
-  async function handleSubmit(event) {
+  async function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
     const dataStored = await submitAddEditvehicle(vehicleID);
     if (dataStored) window.location.href = '#/';
@@ -187,8 +188,8 @@ const AddVehicleForm = observer(({ vehicleID }) => {
               value={description.value}
               name="description"
               id="vehicleDesc"
-              cols="30"
-              rows="10"
+              cols={30}
+              rows={10}
             />
           </div>
         </div>
