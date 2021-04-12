@@ -1,13 +1,24 @@
 import { makeObservable, action, observable } from 'mobx';
-import { Dict, AlertMessage } from '../types';
+import { Dict } from '../types';
 
 // Handle user alert notifications, success, error, etc..
 
 // TODO - simplify message generation, currently has baggage of multiple differing ideas..
 
+type Message = {
+  txt: string;
+  type: string;
+};
+
+type MessageTypes = {
+  success: string;
+  error: string;
+  info: string;
+};
+
 class MessageStore {
-  message: AlertMessage;
-  types: Dict;
+  message: Message;
+  types: MessageTypes;
   commonErrors: Dict;
   commonConfirmations: Dict;
 
@@ -15,7 +26,7 @@ class MessageStore {
     // Default message object
     this.message = {
       txt: '',
-      type: null,
+      type: '',
     };
 
     // Allowed generic message types
@@ -82,9 +93,9 @@ class MessageStore {
     };
   };
 
-  commonConfirmation = (type: string, txt: string) => {
+  commonConfirmation = (type: string, txt: string = '') => {
     this.message = {
-      txt: txt || '',
+      txt: txt,
       type: this.commonConfirmations[type],
     };
   };

@@ -1,6 +1,6 @@
 import { makeObservable, observable, action, computed } from 'mobx';
 import i18n from '../i18n';
-import { Dict } from '../types'
+import { Dict } from '../types';
 
 class UIStore {
   availableTranslations: Dict;

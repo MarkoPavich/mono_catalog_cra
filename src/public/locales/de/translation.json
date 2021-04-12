@@ -128,7 +128,8 @@
         "headerResCount": "Ergebnisse zähle",
         "vehicleCardPrice": "Preis",
         "vehiceCardID": "Fahrzeugkennnummer",
-        "vehicleCardDelBtn": "Löschen "
+        "vehicleCardDelBtn": "Löschen ",
+        "deleteConfirmation": "Fahrzeug gelöscht"
     },
 
     "noResultsComponent": {

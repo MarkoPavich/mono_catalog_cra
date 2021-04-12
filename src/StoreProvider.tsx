@@ -1,12 +1,11 @@
-import React, { createContext, useContext } from 'react';
+import { createContext, useContext, ReactNode, ReactElement } from 'react';
 import { useLocalObservable } from 'mobx-react-lite';
 import createRootStore from './stores/rootStore';
 
-type RootStoreContext = ReturnType<typeof createRootStore>
+type RootStore = ReturnType<typeof createRootStore>
+const StoreContext = createContext<RootStore>({} as RootStore);
 
-const StoreContext = createContext({} as RootStoreContext);
-
-function StoreProvider({ children }: React.PropsWithChildren<{}>) {
+function StoreProvider({ children }: { children: ReactNode }): ReactElement {
   const store = useLocalObservable(createRootStore);
 
   return (
@@ -15,6 +14,8 @@ function StoreProvider({ children }: React.PropsWithChildren<{}>) {
 }
 
 export default StoreProvider;
+
+/* get store hooks */
 
 export const useRootStore = () => useContext(StoreContext);
 
@@ -33,17 +34,27 @@ export const useUIStore = () => {
   return uiStore;
 };
 
-export const useAddVehicleFormStore = () => {
-  const { addVehicleFormStore } = useContext(StoreContext);
-  return addVehicleFormStore;
-};
-
-export const useVehiclesStore = () => {
-  const { vehiclesStore } = useContext(StoreContext);
-  return vehiclesStore;
-};
-
 export const useLoginFormStore = () => {
   const { loginFormStore } = useContext(StoreContext);
   return loginFormStore;
 };
+
+export const useDashboardStore = () => {
+  const { dashboardStore } = useContext(StoreContext);
+  return dashboardStore;
+};
+
+export const useCarsDataStore = () => {
+  const { carsDataStore } = useContext(StoreContext);
+  return carsDataStore;
+};
+
+export const useAddVehicleStore = () => {
+  const { addVehicleStore } = useContext(StoreContext);
+  return addVehicleStore;
+}
+
+export const useMyVehiclesStore = () => {
+  const { myVehiclesStore } = useContext(StoreContext);
+  return myVehiclesStore;
+}

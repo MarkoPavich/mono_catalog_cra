@@ -128,7 +128,8 @@
         "headerResCount": "Results",
         "vehicleCardPrice": "price",
         "vehiceCardID": "vehicle ID",
-        "vehicleCardDelBtn": "Delete"
+        "vehicleCardDelBtn": "Delete",
+        "deleteConfirmation": "Vehicle deleted"
     },
 
     "noResultsComponent": {

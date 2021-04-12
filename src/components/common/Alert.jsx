@@ -1,10 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { useAlert } from 'react-alert';
-import { withNamespaces } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useMessageStore } from '../../StoreProvider';
 
-const Alert = observer(({ t }) => {
+const Alert = observer(() => {
+  const { t } = useTranslation();
   const alert = useAlert(); // Alert library hook
   const {
     message,
@@ -52,4 +53,4 @@ const Alert = observer(({ t }) => {
   return <></>;
 });
 
-export default withNamespaces()(Alert);
+export default Alert;
