@@ -11,6 +11,13 @@ export default class LoginFormStore {
     this.loginForm = loginForm;
     this.registerForm = registerForm;
 
+    this.modalRegisterClassNames = {
+      show: 'a-login-modal-container modal-form-active',
+      hide: 'a-login-modal-container',
+    }
+
+    this.modalRegisterStatus = this.modalRegisterClassNames.hide;
+
     this.authStore = authStore; // Used here for handling auth submissions
 
     this.markFields = markFields;
@@ -18,18 +25,29 @@ export default class LoginFormStore {
     makeObservable(this, {
       loginForm: observable,
       registerForm: observable,
+      modalRegisterStatus: observable,
 
       setLoginForm: action,
       setRegisterForm: action,
       submitLogin: action,
       markFields: action,
       clearRegisterForm: action,
+      showModalRegisterForm: action,
+      hideModalRegisterForm: action,
     });
+  }
+
+  showModalRegisterForm = () => {
+    this.modalRegisterStatus = this.modalRegisterClassNames.show;
   }
 
   setLoginForm = (event) => {
     this.loginForm[event.target.name].value = event.target.value;
   };
+
+  hideModalRegisterForm = () => {
+    this.modalRegisterStatus = this.modalRegisterClassNames.hide;
+  }
 
   setRegisterForm = (event) => {
     if (event.target.type !== 'checkbox')

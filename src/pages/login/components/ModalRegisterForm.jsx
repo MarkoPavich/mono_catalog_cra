@@ -3,11 +3,6 @@ import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
 import { useAuthStore, useLoginFormStore } from '../../../StoreProvider';
 
-function hideModalRegisterForm() {
-  const modal = document.querySelector('#a-login-modal-container');
-  modal.className = 'a-login-modal-container';
-}
-
 const ModalRegisterForm = observer(({ t }) => {
   const { authState } = useAuthStore();
   const {
@@ -15,6 +10,8 @@ const ModalRegisterForm = observer(({ t }) => {
     setRegisterForm,
     submitRegister,
     clearRegisterForm,
+    hideModalRegisterForm,
+    modalRegisterStatus,
   } = useLoginFormStore();
   const { username, email, password, password2, touCheck } = registerForm;
 
@@ -23,7 +20,7 @@ const ModalRegisterForm = observer(({ t }) => {
   }, []);
 
   return (
-    <div className="a-login-modal-container" id="a-login-modal-container">
+    <div className={modalRegisterStatus} id="a-login-modal-container">
       <div className="a-login-form-container a-register-modal-container">
         <button
           type="button"
@@ -129,12 +126,5 @@ const ModalRegisterForm = observer(({ t }) => {
     </div>
   );
 });
-
-export function showModalRegisterForm(event) {
-  event.preventDefault();
-
-  const modal = document.querySelector('#a-login-modal-container');
-  modal.className = 'a-login-modal-container modal-form-active';
-}
 
 export default withNamespaces()(ModalRegisterForm);

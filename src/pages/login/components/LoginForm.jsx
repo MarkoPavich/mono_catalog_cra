@@ -1,12 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react-lite';
 import { withNamespaces } from 'react-i18next';
-import { showModalRegisterForm } from './ModalRegisterForm';
 import { useAuthStore, useLoginFormStore } from '../../../StoreProvider';
 
 const LoginForm = observer(({ t }) => {
   const { authState } = useAuthStore();
-  const { loginForm, setLoginForm, submitLogin } = useLoginFormStore();
+  const { loginForm, setLoginForm, submitLogin, showModalRegisterForm } = useLoginFormStore();
   const { username, password } = loginForm;
 
   function handleSubmit(event) {
