@@ -6,32 +6,24 @@ import { AuthState, Dict } from '../types';
 // TODO - Replace console.logs with proper error handling, maybe something with returning values and messaging
 
 class AuthStore {
-  authState: AuthState;
+  // Authentication state
+  @observable authState: AuthState = {
+    isLoading: false,
+    isAuthenticated: null,
+    token: localStorage.getItem('token'),
+    user: null,
+  };
   messages: MessageStore;
 
   constructor(messages: MessageStore) {
-    // Authentication state
-    this.authState = {
-      isLoading: false,
-      isAuthenticated: null,
-      token: localStorage.getItem('token'),
-      user: null,
-    };
-
     this.messages = messages; // messageStore
 
-    // mobx decorators
-    makeObservable(this, {
-      authState: observable,
-
-      requestLogin: action,
-      requestLogout: action,
-      getUser: action,
-      requestNewAccount: action,
-    });
+    // enable mobx
+    makeObservable(this);
   }
 
   // Exchanges auth token with backend for auth credentials
+  @action
   getUser = async () => {
     if (this.authState.token !== null) {
       this.authState.isLoading = true;
@@ -72,6 +64,7 @@ class AuthStore {
     }
   };
 
+  @action
   requestLogin = async (loginData: Dict) => {
     this.authState.isLoading = true;
 
@@ -102,6 +95,7 @@ class AuthStore {
     }
   };
 
+  @action
   requestLogout = async () => {
     this.authState.isLoading = true;
 
@@ -127,6 +121,7 @@ class AuthStore {
     });
   };
 
+  @action
   requestNewAccount = async (validatedData: Dict) => {
     this.authState.isLoading = true;
 

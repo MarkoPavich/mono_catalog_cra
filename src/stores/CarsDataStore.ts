@@ -23,42 +23,27 @@ interface iDataStore {
 }
 
 class CarsDataStore implements iDataStore {
-  carsData: CarsData;
+  @observable
+  carsData: CarsData = {
+    vehicles: [],
+    carMakes: {},
+    carModels: {},
+    carBodies: {},
+    fuelTypes: {},
+  };
+
+  @observable internalLoading: boolean = false; // This store is loading data
+  @observable externalLoading: boolean = false; // Some other store is loading data
+
   private messages: MessageStore;
-  internalLoading: boolean;
-  externalLoading: boolean;
 
   constructor(messages: MessageStore) {
-    this.carsData = {
-      vehicles: [],
-      carMakes: {},
-      carModels: {},
-      carBodies: {},
-      fuelTypes: {},
-    };
-
-    this.internalLoading = false; // This store is loading data
-    this.externalLoading = false; // Some other store is loading data
-
     this.messages = messages;
-
-    makeObservable(this, {
-      carsData: observable,
-      internalLoading: observable,
-      externalLoading: observable,
-
-      getVehiclesData: action,
-      setLoading: action,
-      clearLoading: action,
-      addUpdateVehicle: action,
-      deleteVehicle: action,
-
-      isLoading: computed,
-    });
-
+    makeObservable(this);
     this.getVehiclesData(); // Initial load data
   }
 
+  @action
   async getVehiclesData() {
     this.internalLoading = true; // mark content loading
     try {
@@ -84,12 +69,14 @@ class CarsDataStore implements iDataStore {
     });
   }
 
+  @computed
   get isLoading() {
     // Return false only if everything stopped loading
     return this.internalLoading || this.externalLoading;
   }
 
   // Proxy data to vehiclesServices, and update store - error handling left to pageStores
+  @action
   async addUpdateVehicle(vehicleData: PreVehicle, editID: string = '') {
     const { vehiclesList, updatedModels } = editID
       ? await vehiclesServices.updateVehicle(vehicleData, editID)
@@ -105,6 +92,7 @@ class CarsDataStore implements iDataStore {
   }
 
   // Proxy deletion ID to vehiclesServices, and update this - error handling left to pageStores
+  @action
   async deleteVehicle(id: string) {
     const updatedVehicles = await vehiclesServices.deleteVehicle(id);
     runInAction(() => {
@@ -112,10 +100,12 @@ class CarsDataStore implements iDataStore {
     });
   }
 
+  @action
   setLoading = () => {
     this.externalLoading = true;
   };
 
+  @action
   clearLoading = () => {
     this.externalLoading = false;
   };

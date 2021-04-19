@@ -7,75 +7,63 @@ import CarsDataStore from '../../stores/CarsDataStore';
 import { Vehicle } from '../../types';
 
 class DashboardStore {
+  @observable filters: ReturnType<typeof filtersForms> = filtersForms(); // filters templates with editable properties - observable
+  @observable currentPage = 1; // pagination observable
+
   dataStore: CarsDataStore;
   messages: MessageStore;
-  sortOptions: typeof sortOptions;
-  filters: ReturnType<typeof filtersForms>;
-  resultsPerPage: number;
-  maxPageNumLinks: number;
-  currentPage: number;
+  sortOptions: typeof sortOptions = sortOptions; // Template with predefined sorting capabilities
+
+  // Pagination config
+  resultsPerPage = 6;
+  maxPageNumLinks = 4;
 
   constructor(messages: MessageStore, dataStore: CarsDataStore) {
     // Cars dataSets
     this.dataStore = dataStore;
     this.messages = messages; // MessageStore
 
-    this.sortOptions = sortOptions; // Template with predefined sorting capabilities
-    this.filters = filtersForms(); // filters templates with editable properties - observable
-
-    // Pagination config
-    this.resultsPerPage = 6;
-    this.maxPageNumLinks = 4;
-    // Editable observable
-    this.currentPage = 1;
-
     // MOBX
-    makeObservable(this, {
-      filters: observable,
-      currentPage: observable,
-
-      setBodyParams: action,
-      setFuelParams: action,
-      setMakeParam: action,
-      setSortFilter: action,
-      selectPage: action,
-
-      activeFilters: computed,
-      vehiclesList: computed,
-      carsData: computed,
-    });
+    makeObservable(this);
   }
 
+  @computed
   get carsData() {
     return this.dataStore.carsData;
   }
 
   // set* functions control inputs
+  @action
   setBodyParams = (event: ChangeEvent<HTMLInputElement>) => {
     this.filters.bodyParams[event.target.name] = event.target.checked;
     this.currentPage = 1; // Reset pagination selection
   };
 
+  @action
   setFuelParams = (event: ChangeEvent<HTMLInputElement>) => {
     this.filters.fuelParams[event.target.name] = event.target.checked;
     this.currentPage = 1;
   };
 
+  @action
   setMakeParam = (event: ChangeEvent<HTMLSelectElement>) => {
     this.filters.makeParam = event.target.value;
     this.currentPage = 1;
   };
 
+  @action
   setSortFilter = (event: ChangeEvent<HTMLSelectElement>) => {
     this.filters.sortFilter =
       sortOptions[event.target.value] || sortOptions.manufDateAsc;
     this.currentPage = 1;
   };
 
+  @action
   selectPage = (page: number) => {
     this.currentPage = page;
   };
 
+  @computed
   get activeFilters() {
     const make = this.filters.makeParam; // Set filter by make state
     const body: string[] = [];
@@ -97,6 +85,7 @@ class DashboardStore {
     };
   }
 
+  @computed
   get vehiclesList() {
     // Get vehicles array
     let filtered =

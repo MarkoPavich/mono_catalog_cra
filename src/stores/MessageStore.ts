@@ -17,53 +17,38 @@ type MessageTypes = {
 };
 
 class MessageStore {
-  message: Message;
-  types: MessageTypes;
-  commonErrors: Dict;
-  commonConfirmations: Dict;
+  // Default message object
+  @observable message: Message = {
+    txt: '',
+    type: '',
+  };
+  // Allowed generic message types
+  types: MessageTypes = {
+    success: 'success',
+    error: 'error',
+    info: 'info',
+  };
+  // Common error and confirmation types implemented with translation system
+  commonErrors: Dict = {
+    userExists: 'userExists',
+    emailExists: 'emailExists',
+    invalidLogin: 'invalidLogin',
+    invalidVehicleForm: 'invalidVehicleForm',
+    noMatchingVehicleID: 'noMatchingVehicleID',
+  };
+  commonConfirmations: Dict = {
+    userRegistered: 'userRegistered',
+    userLogged: 'userLogged',
+    vehicleAdded: 'vehicleAdded',
+    vehicleEdited: 'vehicleEdited',
+  };
 
   constructor() {
-    // Default message object
-    this.message = {
-      txt: '',
-      type: '',
-    };
-
-    // Allowed generic message types
-    this.types = {
-      success: 'success',
-      error: 'error',
-      info: 'info',
-    };
-
-    // Common error and confirmation types implemented with translation system
-    this.commonErrors = {
-      userExists: 'userExists',
-      emailExists: 'emailExists',
-      invalidLogin: 'invalidLogin',
-      invalidVehicleForm: 'invalidVehicleForm',
-      noMatchingVehicleID: 'noMatchingVehicleID',
-    };
-
-    this.commonConfirmations = {
-      userRegistered: 'userRegistered',
-      userLogged: 'userLogged',
-      vehicleAdded: 'vehicleAdded',
-      vehicleEdited: 'vehicleEdited',
-    };
-
-    // MOBX decorators
-    makeObservable(this, {
-      message: observable,
-
-      createSuccess: action,
-      createInfo: action,
-      createError: action,
-      commonError: action,
-      commonConfirmation: action,
-    });
+    // enable MOBX
+    makeObservable(this);
   }
 
+  @observable
   createSuccess = (txt: string) => {
     this.message = {
       txt,
@@ -72,6 +57,7 @@ class MessageStore {
   };
 
   // Baggage
+  @observable
   createError = (txt: string) => {
     this.message = {
       txt,
@@ -79,6 +65,7 @@ class MessageStore {
     };
   };
 
+  @observable
   createInfo = (txt: string) => {
     this.message = {
       txt,
@@ -86,6 +73,7 @@ class MessageStore {
     };
   };
 
+  @observable
   commonError = (type: string) => {
     this.message = {
       txt: '',
@@ -93,6 +81,7 @@ class MessageStore {
     };
   };
 
+  @observable
   commonConfirmation = (type: string, txt: string = '') => {
     this.message = {
       txt: txt,

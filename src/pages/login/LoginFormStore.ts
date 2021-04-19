@@ -9,56 +9,43 @@ import { loginForm, registerForm, Form } from '../../stores/templates/forms';
 import { Dict } from '../../types';
 
 export default class LoginFormStore {
-  loginForm: Form;
-  registerForm: Form;
+  modalRegisterClassNames: Dict = {
+    show: 'a-login-modal-container modal-form-active',
+    hide: 'a-login-modal-container',
+  };
+
+  // Instantiate forms
+  @observable loginForm: Form = loginForm;
+  @observable registerForm: Form = registerForm;
+
+  @observable modalRegisterStatus = this.modalRegisterClassNames.hide;
+
   authStore: AuthStore;
-  markFields: typeof markFields;
-  modalRegisterClassNames: Dict;
-  modalRegisterStatus: string;
+
+  @action markFields: typeof markFields = markFields;
 
   constructor(authStore: AuthStore) {
-    // Instantiate form
-    this.loginForm = loginForm;
-    this.registerForm = registerForm;
-
     this.authStore = authStore; // Used here for handling auth submissions
 
-    this.markFields = markFields;
-
-    this.modalRegisterClassNames = {
-      show: 'a-login-modal-container modal-form-active',
-      hide: 'a-login-modal-container',
-    };
-
-    this.modalRegisterStatus = this.modalRegisterClassNames.hide;
-
-    makeObservable(this, {
-      loginForm: observable,
-      registerForm: observable,
-      modalRegisterStatus: observable,
-
-      setLoginForm: action,
-      setRegisterForm: action,
-      submitLogin: action,
-      markFields: action,
-      clearRegisterForm: action,
-      showModalRegisterForm: action,
-      hideModalRegisterForm: action,
-    });
+    makeObservable(this);
   }
 
+  @action
   showModalRegisterForm = () => {
     this.modalRegisterStatus = this.modalRegisterClassNames.show;
   };
 
+  @action
   hideModalRegisterForm = () => {
     this.modalRegisterStatus = this.modalRegisterClassNames.hide;
   };
 
+  @action
   setLoginForm = (event: ChangeEvent<HTMLInputElement>) => {
     this.loginForm[event.target.name].value = event.target.value;
   };
 
+  @action
   setRegisterForm = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.type !== 'checkbox')
       this.registerForm[event.target.name].value = event.target.value;
@@ -68,10 +55,12 @@ export default class LoginFormStore {
       ].value = event.target.checked.toString();
   };
 
+  @action
   clearRegisterForm = () => {
     this.registerForm = registerForm;
   };
 
+  @action
   submitLogin = () => {
     // Generate data container to reduce dot notaitions a bit..
     const data = {
@@ -91,6 +80,7 @@ export default class LoginFormStore {
   };
 
   // Similar to the above
+  @action
   submitRegister = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const data: Dict = {};

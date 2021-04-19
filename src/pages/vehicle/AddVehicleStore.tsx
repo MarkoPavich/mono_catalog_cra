@@ -17,45 +17,34 @@ import MessageStore from '../../stores/MessageStore';
 import { ValidatedVehicleData, Dict } from '../../types';
 
 export default class AddVehicleFormStore {
+  // Instantiate form template
+  @observable vehicleForm: typeof vehicleForm = vehicleForm;
+
   messages: MessageStore;
   dataStore: CarsDataStore;
-  vehicleForm: typeof vehicleForm;
-  markFields: typeof markFields;
+
+  @action markFields: typeof markFields = markFields;
 
   constructor(messages: MessageStore, dataStore: CarsDataStore) {
-    // Instantiate form template
-    this.vehicleForm = vehicleForm;
-
     this.messages = messages; // Notifications on submissions
     this.dataStore = dataStore; // cars data sets
 
-    this.markFields = markFields;
-
-    // MOBX decorators
-    makeObservable(this, {
-      vehicleForm: observable,
-
-      setVehicleForm: action,
-      markFields: action,
-      setEditMode: action,
-      clearVehicleForm: action,
-      submitAddEditvehicle: action,
-      addVehicle: action,
-
-      carsData: computed,
-      isLoading: computed,
-    });
+    // Enable MOBX
+    makeObservable(this);
   }
 
+  @computed
   get carsData() {
     return this.dataStore.carsData;
   }
 
+  @computed
   get isLoading() {
     return this.dataStore.isLoading;
   }
 
   // set* functions control inputs
+  @action
   setVehicleForm = (
     event: ChangeEvent<
       HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement
@@ -64,10 +53,12 @@ export default class AddVehicleFormStore {
     this.vehicleForm[event.target.name].value = event.target.value;
   };
 
+  @action
   clearVehicleForm = () => {
     this.vehicleForm = vehicleForm;
   };
 
+  @action
   submitAddEditvehicle = async (vehicleID: string) => {
     // Set vehicle data model
     const data: ValidatedVehicleData = {
@@ -111,6 +102,7 @@ export default class AddVehicleFormStore {
     return status.isValid;
   };
 
+  @action
   setEditMode = (vehicleID: string) => {
     // Get vehicle object
     const vehicle = this.getVehicle(vehicleID);
@@ -139,6 +131,7 @@ export default class AddVehicleFormStore {
       this.messages.commonError(this.messages.commonErrors.noMatchingVehicleID);
   };
 
+  @action
   addVehicle = async (
     validatedData: ValidatedVehicleData,
     editID: string = ''

@@ -11,16 +11,15 @@ class MyVehiclesStore {
     this.messages = messages;
     this.dataStore = dataStore;
 
-    makeObservable(this, {
-      carsData: computed,
-      isLoading: computed,
-    });
+    makeObservable(this);
   }
 
+  @computed
   get carsData() {
     return this.dataStore.carsData;
   }
 
+  @computed
   get isLoading() {
     return this.dataStore.isLoading;
   }
